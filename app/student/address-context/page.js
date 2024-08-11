@@ -15,4 +15,8 @@ const AddressProvider = ({ children }) => {
   );
 };
 
-export { AddressProvider, AddressContext };
+const useAddress = () => {
+  return useContext(AddressContext);
+};
+
+export { AddressProvider, useAddress };
