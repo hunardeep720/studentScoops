@@ -7,8 +7,8 @@
 
 import { useState, useEffect } from "react";
 import Link from 'next/link';
-import { Button } from "@/components/ui/button";
-import { DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuItem } from "@/components/ui/dropdown-menu";
+import { Button } from "@/Components/ui/button";
+import { DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuItem } from "@/Components/ui/dropdown-menu";
 import CartDropdown from "./checkoutCart/page";
 
 export default function RestaurantItems() {
