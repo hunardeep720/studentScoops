@@ -5,7 +5,6 @@ import Header_stud from "./header_stud/page"; // Importing the header component 
 import { signOut } from "firebase/auth"; // Firebase function to sign out the user
 import { auth } from "@/app/firebase/config"; // Importing the Firebase authentication instance
 import { useRouter } from "next/navigation"; // Next.js hook to handle navigation
-import { CartProvider } from "@/app/Restrauntitems/cart-context/page"; // Importing CartProvider to manage cart state
 
 const Layout = ({ children }) => {
   const router = useRouter(); // Router instance for navigation
@@ -22,21 +21,17 @@ const Layout = ({ children }) => {
   };
 
   return (
-    <CartProvider>
+    <div className="flex flex-col h-screen">
       {" "}
-      {/* Wraps the component tree in CartProvider to manage cart state */}
-      <div className="flex flex-col h-screen">
+      {/* Main layout container */}
+      <Header_stud handleSignOut={handleSignOut} />{" "}
+      {/* Render the header component with the sign out handler */}
+      <main className="flex flex-1 flex-col gap-4 p-4 lg:gap-6 lg:p-6 overflow-auto">
         {" "}
-        {/* Main layout container */}
-        <Header_stud handleSignOut={handleSignOut} />{" "}
-        {/* Render the header component with the sign out handler */}
-        <main className="flex flex-1 flex-col gap-4 p-4 lg:gap-6 lg:p-6 overflow-auto">
-          {" "}
-          {/* Main content area */}
-          {children} {/* Render child components */}
-        </main>
-      </div>
-    </CartProvider>
+        {/* Main content area */}
+        {children} {/* Render child components */}
+      </main>
+    </div>
   );
 };
 
