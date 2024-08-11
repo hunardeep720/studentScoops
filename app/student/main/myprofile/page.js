@@ -1,9 +1,9 @@
 "use client";
 import React, { useState, useEffect } from "react";
 
-import { Label } from "@/components/ui/label";
-import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
+import { Label } from "@/Components/ui/label";
+import { Input } from "@/Components/ui/input";
+import { Button } from "@/Components/ui/button";
 import {
   Card,
   CardHeader,
@@ -11,7 +11,7 @@ import {
   CardDescription,
   CardContent,
   CardFooter,
-} from "@/components/ui/card";
+} from "@/Components/ui/card";
 import { getStudentDataByStudents } from "@/services/GetRequest/getRequest";
 import { useUserAuth } from "@/services/utils";
 import { useRouter } from "next/navigation";

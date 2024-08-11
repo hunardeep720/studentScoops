@@ -2,7 +2,7 @@
 import { useEffect, useState, useRef } from "react";
 import { useRouter } from "next/navigation";
 import { useUserAuth } from "@/services/utils";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion } from "framer-motion";
 import { IoRestaurantOutline } from "react-icons/io5";
 
 
@@ -11,7 +11,7 @@ import Link from "next/link";
 import { Button } from "@/Components/ui/button";
 
 // import Slideshow from '@/components/SlideShow';
-import DealoftheDay from "@/components/DealoftheDay";
+import DealoftheDay from "@/Components/DealoftheDay";
 import { getRestaurantDataByStudents } from "@/services/GetRequest/getRequest";
 
 const Home = () => {

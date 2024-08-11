@@ -13,10 +13,10 @@ import {
   CardDescription,
   CardContent,
   CardFooter,
-} from "@/components/ui/card";
-import { Label } from "@/components/ui/label";
-import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
+} from "@/Components/ui/card";
+import { Label } from "@/Components/ui/label";
+import { Input } from "@/Components/ui/input";
+import { Button } from "@/Components/ui/button";
 import {
   AlertDialog,
   AlertDialogContent,

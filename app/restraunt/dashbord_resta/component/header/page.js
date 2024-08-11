@@ -19,9 +19,9 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import { Button } from "@/components/ui/button";
+} from "@/Components/ui/dropdown-menu";
+import { Sheet, SheetContent, SheetTrigger } from "@/Components/ui/sheet";
+import { Button } from "@/Components/ui/button";
 
 export default function Header({ handleSignOut }) {
   const router = useRouter();

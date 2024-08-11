@@ -1,7 +1,5 @@
 "use client";
 import React, { useState, useEffect } from "react";
-import Swal from "sweetalert2";
-import { deleteRestaurantData } from "@/services/PostRequest/postRequest";
 import { updateSaitRestaurantStatus, deleteRestaurantsFromAdmin } from "@/services/PostRequest/postRequest";
 
 import Table from "./Table";

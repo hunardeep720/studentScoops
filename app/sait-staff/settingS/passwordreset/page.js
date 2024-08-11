@@ -6,11 +6,11 @@
 "use client"
 
 import { useState } from "react"
-import { Card, CardContent, CardFooter } from "@/components/ui/card"
-import { Label } from "@/components/ui/label"
-import { Switch } from "@/components/ui/switch"
-import { Input } from "@/components/ui/input"
-import { Button } from "@/components/ui/button"
+import { Card, CardContent, CardFooter } from "@/Components/ui/card"
+import { Label } from "@/Components/ui/label"
+import { Switch } from "@/Components/ui/switch"
+import { Input } from "@/Components/ui/input"
+import { Button } from "@/Components/ui/button"
 import { updatePassword, EmailAuthProvider, reauthenticateWithCredential } from "firebase/auth";
 
 export default function Passwordreset({auth,email}) {

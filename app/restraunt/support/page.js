@@ -1,10 +1,10 @@
 
 import Link from "next/link"
-import { Collapsible, CollapsibleTrigger, CollapsibleContent } from "@/components/ui/collapsible"
-import { Label } from "@/components/ui/label"
-import { Input } from "@/components/ui/input"
-import { Textarea } from "@/components/ui/textarea"
-import { Button } from "@/components/ui/button"
+import { Collapsible, CollapsibleTrigger, CollapsibleContent } from "@/Components/ui/collapsible"
+import { Label } from "@/Components/ui/label"
+import { Input } from "@/Components/ui/input"
+import { Textarea } from "@/Components/ui/textarea"
+import { Button } from "@/Components/ui/button"
 
 export default function Component() {
   return (

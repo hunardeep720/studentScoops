@@ -7,8 +7,8 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuItem,
-} from "@/components/ui/dropdown-menu";
-import { Button } from "@/components/ui/button";
+} from "@/Components/ui/dropdown-menu";
+import { Button } from "@/Components/ui/button";
 import CartDropdown from "@/app/Restrauntitems/checkoutCart/page";
 import AddressComponent from "../../address-component/page";
 import { getStudentDataByStudents } from "@/services/GetRequest/getRequest";

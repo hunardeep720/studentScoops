@@ -10,7 +10,6 @@ import {
   SheetFooter,
 } from "@/Components/ui/sheet";
 import { Button } from "@/Components/ui/button";
-import { Avatar, AvatarImage, AvatarFallback } from "@/Components/ui/avatar";
 import { useRouter } from "next/navigation";
 import { deleteFoodFromCart } from "@/services/PostRequest/postRequest";
 import {

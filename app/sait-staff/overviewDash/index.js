@@ -1,4 +1,3 @@
-import Head from "next/head";
 import Overview from "./overview";
 import Table from "./table";
 import { useState, useEffect } from "react";
@@ -9,7 +8,6 @@ import { updateSaitEmployeeStatus, deleteSaitUserFromAdmin } from "@/services/Po
 import { getAuth } from "firebase/auth";
 import { useRouter } from "next/navigation";
 import Swal from "sweetalert2";
-import { doc } from "firebase/firestore";
 
 export default function Dash({ fetchData, fetchDataByUser, data, adminData, students, restaurants }) {
   const auth = getAuth();

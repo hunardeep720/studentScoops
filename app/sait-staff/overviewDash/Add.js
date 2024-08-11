@@ -4,11 +4,10 @@ import { formatPhoneNumber } from "@/Constant/formated";
 import Swal from "sweetalert2";
 
 import { collection, addDoc } from "firebase/firestore";
-import { db, auth } from "@/app/firebase/config";
-import { createUserWithEmailAndPassword } from "firebase/auth";
+import { db } from "@/app/firebase/config";
 import { existingRestaurantData } from "@/services/PostRequest/postRequest";
 import { sendMail } from "@/lib/mail";
-import PasswordEmail from "@/components/PasswordEmail";
+import PasswordEmail from "@/Components/PasswordEmail";
 import ReactDOMServer from "react-dom/server";
 
 const Add = ({ admin, setAdmins, setIsAdding, fetchDataByUser }) => {

@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { formatPhoneNumber } from "@/Constant/formated";
 import Swal from "sweetalert2";
 import { updateStudent } from "@/services/PostRequest/postRequest";

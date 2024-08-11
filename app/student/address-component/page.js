@@ -1,9 +1,9 @@
 "use client"
 
 import  React, { useState } from "react"
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogFooter } from "@/components/ui/dialog"
-import { Input } from "@/components/ui/input"
-import { Button } from "@/components/ui/button"
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogFooter } from "@/Components/ui/dialog"
+import { Input } from "@/Components/ui/input"
+import { Button } from "@/Components/ui/button"
 import { useAddress } from "../address-context/page"
 
 export default function Component() {

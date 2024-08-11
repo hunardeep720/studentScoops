@@ -6,7 +6,7 @@ import Swal from "sweetalert2";
 import { collection, addDoc } from "firebase/firestore";
 import { db } from "@/app/firebase/config";
 import { sendMail } from "@/lib/mail";
-import PasswordEmail from "@/components/PasswordEmail";
+import PasswordEmail from "@/Components/PasswordEmail";
 import ReactDOMServer from "react-dom/server";
 
 

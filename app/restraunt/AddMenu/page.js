@@ -5,15 +5,13 @@ import { useRouter } from "next/navigation";
 import { addRestaurantMenu } from "@/services/PostRequest/postRequest";
 import {
   Card,
-  CardHeader,
-  CardTitle,
   CardContent,
   CardFooter,
-} from "@/components/ui/card";
-import { Label } from "@/components/ui/label";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
-import { Button } from "@/components/ui/button";
+} from "@/Components/ui/card";
+import { Label } from "@/Components/ui/label";
+import { Input } from "@/Components/ui/input";
+import { Textarea } from "@/Components/ui/textarea";
+import { Button } from "@/Components/ui/button";
 
 const Page = () => {
   const { user } = useUserAuth();

@@ -1,12 +1,12 @@
 "use client";
-import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
+import { Input } from "@/Components/ui/input";
+import { Button } from "@/Components/ui/button";
 import { useRouter, useSearchParams } from "next/navigation";
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import { IoMdArrowRoundBack } from "react-icons/io";
 import { HiBuildingStorefront } from "react-icons/hi2";
-import { Badge } from "@/components/ui/badge";
+import { Badge } from "@/Components/ui/badge";
 import Swal from "sweetalert2";
 import {
   getRestaurantMenuByStudents,
@@ -17,7 +17,7 @@ import {
 } from "@/services/GetRequest/getRequest";
 import { addMenuToStudent } from "@/services/PostRequest/postRequest";
 import { useUserAuth } from "@/services/utils";
-import Modal from "@/components/Modal";
+import Modal from "@/Components/Modal";
 import Link from "next/link";
 import Layout from "../../transtion/Layout";
 import { motion } from "framer-motion";

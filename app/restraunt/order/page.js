@@ -1,7 +1,7 @@
 "use client";
 import React, { useState, useEffect } from "react";
-import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
+import { Input } from "@/Components/ui/input";
+import { Button } from "@/Components/ui/button";
 import {
   AlertDialog,
   AlertDialogContent,
@@ -11,7 +11,7 @@ import {
   AlertDialogFooter,
   AlertDialogCancel,
   AlertDialogAction,
-} from "@/components/ui/alert-dialog";
+} from "@/Components/ui/alert-dialog";
 import { addMenuToRestaurantHistory } from "@/services/PostRequest/postRequest";
 import {
   getOrderMenuByOwner,

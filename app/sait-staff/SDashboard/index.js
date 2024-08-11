@@ -1,6 +1,5 @@
 "use client";
 import React, { useState, useEffect } from "react";
-import Swal from "sweetalert2";
 import Table from "./Table";
 import Add from "./Add";
 import Edit from "./Edit";

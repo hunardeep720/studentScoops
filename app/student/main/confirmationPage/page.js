@@ -3,8 +3,8 @@
 import { useState, useEffect, use } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
-import { Card } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
+import { Card } from "@/Components/ui/card";
+import { Button } from "@/Components/ui/button";
 import {
   getStudentConfirmOrderData,
   getStudentDataByStudents,

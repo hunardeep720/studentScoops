@@ -8,9 +8,9 @@ import { db } from "@/app/firebase/config";
 import { deleteDoc, doc } from "firebase/firestore";
 import { getRestaurantMenuByOwner } from "@/services/GetRequest/getRequest";
 import { useRouter } from "next/navigation";
-import { Input } from "@/components/ui/input";
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
+import { Input } from "@/Components/ui/input";
+import { Badge } from "@/Components/ui/badge";
+import { Button } from "@/Components/ui/button";
 import { ref, getStorage, listAll, deleteObject } from "firebase/storage";
 import {
   Card,
@@ -19,14 +19,14 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@/components/ui/card";
+} from "@/Components/ui/card";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuLabel,
   DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
+} from "@/Components/ui/dropdown-menu";
 import {
   Table,
   TableBody,
@@ -34,7 +34,7 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from "@/components/ui/table";
+} from "@/Components/ui/table";
 import Link from "next/link";
 
 export default function SettingsRestaurant() {

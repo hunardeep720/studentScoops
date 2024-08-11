@@ -6,7 +6,7 @@ import { PiStudentBold } from "react-icons/pi";
 import { MdOutlineDoneOutline } from "react-icons/md";
 import { FaFilter } from "react-icons/fa";
 import { AiFillDelete } from "react-icons/ai";
-import Modal from "@/components/Modal";
+import Modal from "@/Components/Modal";
 
 const Table = ({
   students,

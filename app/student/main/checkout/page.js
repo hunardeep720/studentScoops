@@ -1,9 +1,9 @@
 "use client"; // Indicates that this component uses client-side features like hooks or context
 
-import { useState, useEffect, use } from "react";
-import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
+import { useState, useEffect } from "react";
+import { Card, CardHeader, CardTitle, CardContent } from "@/Components/ui/card";
+import { Button } from "@/Components/ui/button";
+import { Avatar, AvatarImage, AvatarFallback } from "@/Components/ui/avatar";
 import Map from "../map/map"; // Adjust the import path based on your file structure
 import Link from "next/link";
 import { useAddress } from "../../address-context/page";
@@ -15,17 +15,17 @@ import {
   DialogTitle,
   DialogDescription,
   DialogFooter,
-} from "@/components/ui/dialog";
-import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
-import { Label } from "@/components/ui/label";
-import { Input } from "@/components/ui/input";
+} from "@/Components/ui/dialog";
+import { RadioGroup, RadioGroupItem } from "@/Components/ui/radio-group";
+import { Label } from "@/Components/ui/label";
+import { Input } from "@/Components/ui/input";
 import {
   Select,
   SelectTrigger,
   SelectValue,
   SelectContent,
   SelectItem,
-} from "@/components/ui/select";
+} from "@/Components/ui/select";
 import {
   getStudentDataByStudents,
   getStudentMenuByStudents,
@@ -102,7 +102,7 @@ export default function Component() {
   function fetchRestaurantData() {
     getRestaurantDataForCheckoutByStudents((data) => {
       setRestaurantInfo(data);
-      console.log(data)
+      console.log(data);
     }, cartItems[0].restaurantUid);
   }
 
@@ -120,8 +120,10 @@ export default function Component() {
       setTaxAmmount(
         parseFloat(
           (
-            cartItems.reduce((total, item) => total + parseFloat(item.price), 0) *
-            0.05
+            cartItems.reduce(
+              (total, item) => total + parseFloat(item.price),
+              0
+            ) * 0.05
           ).toFixed(2)
         )
       );
@@ -130,7 +132,7 @@ export default function Component() {
       );
       setTotalAmmount(
         cartItems.reduce((total, item) => total + parseFloat(item.price), 0) +
-          cartItems.reduce((total, item) => total + parseFloat(item.price), 0)*
+          cartItems.reduce((total, item) => total + parseFloat(item.price), 0) *
             0.05
       );
     }
@@ -196,10 +198,10 @@ export default function Component() {
           item.customerId,
           studentData[0].name,
           studentData[0].lastName,
-          orderId,
+          orderId
         );
       });
-     
+
       router.push("/student/main/confirmationPage");
     }
   };
@@ -252,23 +254,23 @@ export default function Component() {
                   </Button>
                 </Link>
               </div>
-                      <div className="flex items-center text-3xl border-2 shadow-xl rounded-lg space-x-3 p-2">
-              <div className="flex items-center space-x-3 flex-1">
-                <Avatar className="border-2 shadow-md w-20 h-30">
-                  <AvatarImage src={restaurantInfo[0].imageUrl} />
-                  <AvatarFallback>PC</AvatarFallback>
-                </Avatar>
-                <div>
-                  <p className="font-bold">{restaurantInfo[0].name}</p>
-                  <p className="text-sm text-muted-foreground">
-                    {restaurantInfo[0].address}
-                  </p>
+              <div className="flex items-center text-3xl border-2 shadow-xl rounded-lg space-x-3 p-2">
+                <div className="flex items-center space-x-3 flex-1">
+                  <Avatar className="border-2 shadow-md w-20 h-30">
+                    <AvatarImage src={restaurantInfo[0].imageUrl} />
+                    <AvatarFallback>PC</AvatarFallback>
+                  </Avatar>
+                  <div>
+                    <p className="font-bold">{restaurantInfo[0].name}</p>
+                    <p className="text-sm text-muted-foreground">
+                      {restaurantInfo[0].address}
+                    </p>
+                  </div>
+                </div>
+                <div className="flex items-center mr-10 text-bold text-4xl">
+                  <HiBuildingStorefront />
                 </div>
               </div>
-              <div className="flex items-center mr-10 text-bold text-4xl">
-                <HiBuildingStorefront />
-              </div>
-            </div>
             </CardContent>
           ) : (
             <div className="w-full h-full grid items-center gap-4">

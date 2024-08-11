@@ -7,7 +7,7 @@ import {
 } from "firebase/auth";
 import zxcvbn from "zxcvbn";
 import { sendMail } from "@/lib/mail";
-import WelcomeEmail from "@/components/WelcomeEmail"
+import WelcomeEmail from "@/Components/WelcomeEmail"
 import ReactDOMServer from 'react-dom/server';
 
 //icons
@@ -15,7 +15,6 @@ import { FaCheckCircle } from "react-icons/fa";
 import { AiFillCloseCircle } from "react-icons/ai";
 import { BiSolidCommentError } from "react-icons/bi";
 import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
-import addStudentEmailStatus from "@/services/PostRequest/postRequest";
 import { getStudentEmailWithStatus } from "@/services/GetRequest/getRequest";
 
 const Register = () => {

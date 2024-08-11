@@ -1,7 +1,7 @@
 'use client';
 import React, { useState } from "react";
 import { sendMail } from "@/lib/mail";
-import EmailTemplate from "@/components/emailTemplate";
+import EmailTemplate from "@/Components/emailTemplate";
 import ReactDOMServer from "react-dom/server";
 import Swal from "sweetalert2";
 

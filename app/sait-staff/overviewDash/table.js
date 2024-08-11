@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { LuPencil } from "react-icons/lu";
 import { BsEnvelopeAtFill } from "react-icons/bs";
 import { IoMdPersonAdd } from "react-icons/io";
-import Modal from "@/components/Modal";
+import Modal from "@/Components/Modal";
 import { FaFilter } from "react-icons/fa";
 import { MdOutlineDoneOutline } from "react-icons/md";
 import { AiFillDelete } from "react-icons/ai";

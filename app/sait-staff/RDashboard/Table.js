@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import { LuPencil } from "react-icons/lu";
 import { AiFillDelete } from "react-icons/ai";
 import { BsEnvelopeAtFill } from "react-icons/bs";
-import Modal from "@/components/Modal";
+import Modal from "@/Components/Modal";
 import { IoStorefront } from "react-icons/io5";
 import { formatPhoneNumber } from "@/Constant/formated";
 import { MdOutlineDoneOutline } from "react-icons/md";
