@@ -1,10 +1,13 @@
-
-import Link from "next/link"
-import { Collapsible, CollapsibleTrigger, CollapsibleContent } from "@/Components/ui/collapsible"
-import { Label } from "@/Components/ui/label"
-import { Input } from "@/Components/ui/input"
-import { Textarea } from "@/Components/ui/textarea"
-import { Button } from "@/Components/ui/button"
+import Link from "next/link";
+import {
+  Collapsible,
+  CollapsibleTrigger,
+  CollapsibleContent,
+} from "@/Components/ui/collapsible";
+import { Label } from "@/Components/ui/label";
+import { Input } from "@/Components/ui/input";
+import { Textarea } from "@/Components/ui/textarea";
+import { Button } from "@/Components/ui/button";
 
 export default function Component() {
   return (
@@ -13,9 +16,12 @@ export default function Component() {
         <div className="container px-4 md:px-6">
           <div className="flex flex-col items-center justify-center space-y-4 text-center">
             <div className="space-y-2">
-              <h1 className="text-3xl font-bold tracking-tighter sm:text-5xl text-white">How can we help you?</h1>
+              <h1 className="text-3xl font-bold tracking-tighter sm:text-5xl text-white">
+                How can we help you?
+              </h1>
               <p className="max-w-[900px] text-white/80 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-                We're here to provide the support you need. Browse our FAQ or submit a support request.
+                We&apos;re here to provide the support you need. Browse our FAQ
+                or submit a support request.
               </p>
             </div>
             <Link
@@ -35,7 +41,9 @@ export default function Component() {
               <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl text-yellow-500">
                 Frequently Asked Questions
               </h2>
-              <p className="text-yellow-500/80">Browse our most common questions and answers.</p>
+              <p className="text-yellow-500/80">
+                Browse our most common questions and answers.
+              </p>
             </div>
             <div className="space-y-4">
               <Collapsible className="space-y-2">
@@ -44,8 +52,9 @@ export default function Component() {
                   <ChevronRightIcon className="h-5 w-5 text-yellow-500 transition-transform group-[data-state=open]:rotate-90" />
                 </CollapsibleTrigger>
                 <CollapsibleContent className="px-4 pt-2 text-yellow-500/80">
-                  To reset your password, go to the login page and click the "Forgot Password" link. Enter your email
-                  address and we'll send you instructions to reset your password.
+                  To reset your password, go to the login page and click the
+                  &quot;Forgot Password&quot; link. Enter your email address and
+                  we&apos;ll send you instructions to reset your password.
                 </CollapsibleContent>
               </Collapsible>
               <Collapsible className="space-y-2">
@@ -54,8 +63,12 @@ export default function Component() {
                   <ChevronRightIcon className="h-5 w-5 text-yellow-500 transition-transform group-[data-state=open]:rotate-90" />
                 </CollapsibleTrigger>
                 <CollapsibleContent className="px-4 pt-2 text-yellow-500/80">
-                  To cancel your subscription, log into your account and go to the Billing section. There you'll find an
-                  option to cancel your subscription. If you need further assistance, please contact our support team.
+                  <p>
+                    To cancel your subscription, log into your account and go to
+                    the Billing section. There you&apos;ll find an option to
+                    cancel your subscription. If you need further assistance,
+                    please contact our support team.
+                  </p>
                 </CollapsibleContent>
               </Collapsible>
               <Collapsible className="space-y-2">
@@ -64,9 +77,10 @@ export default function Component() {
                   <ChevronRightIcon className="h-5 w-5 text-yellow-500 transition-transform group-[data-state=open]:rotate-90" />
                 </CollapsibleTrigger>
                 <CollapsibleContent className="px-4 pt-2 text-yellow-500/80">
-                  To update your payment information, log into your account and go to the Billing section. There you'll
-                  find an option to update your payment method. If you need further assistance, please contact our
-                  support team.
+                  To update your payment information, log into your account and
+                  go to the Billing section. There you&apos;ll find an option to
+                  update your payment method. If you need further assistance,
+                  please contact our support team.
                 </CollapsibleContent>
               </Collapsible>
               <Collapsible className="space-y-2">
@@ -75,22 +89,29 @@ export default function Component() {
                   <ChevronRightIcon className="h-5 w-5 text-yellow-500 transition-transform group-[data-state=open]:rotate-90" />
                 </CollapsibleTrigger>
                 <CollapsibleContent className="px-4 pt-2 text-yellow-500/80">
-                  To change your email address, log into your account and go to the Account section. There you'll find
-                  an option to update your email address. If you need further assistance, please contact our support
-                  team.
+                  To change your email address, log into your account and go to
+                  the Account section. There you&apos;ll find an option to update
+                  your email address. If you need further assistance, please
+                  contact our support team.
                 </CollapsibleContent>
               </Collapsible>
             </div>
           </div>
         </div>
       </section>
-      <section id="contact" className="w-full py-12 md:py-24 lg:py-10 bg-gradient-to-br from-yellow-500 to-yellow-400">
+      <section
+        id="contact"
+        className="w-full py-12 md:py-24 lg:py-10 bg-gradient-to-br from-yellow-500 to-yellow-400"
+      >
         <div className="container px-4 md:px-6">
           <div className="space-y-8">
             <div className="space-y-2">
-              <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl text-white">Contact Us</h2>
+              <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl text-white">
+                Contact Us
+              </h2>
               <p className="text-white/80">
-                Have a question or need help? Fill out the form below and we'll get back to you as soon as possible.
+                Have a question or need help? Fill out the form below and we&apos;ll
+                get back to you as soon as possible.
               </p>
             </div>
             <form className="space-y-4">
@@ -105,14 +126,22 @@ export default function Component() {
                   <Label htmlFor="email" className="text-white">
                     Email
                   </Label>
-                  <Input id="email" type="email" placeholder="Enter your email" />
+                  <Input
+                    id="email"
+                    type="email"
+                    placeholder="Enter your email"
+                  />
                 </div>
               </div>
               <div className="space-y-2">
                 <Label htmlFor="message" className="text-white">
                   Message
                 </Label>
-                <Textarea id="message" placeholder="Enter your message" className="min-h-[120px]" />
+                <Textarea
+                  id="message"
+                  placeholder="Enter your message"
+                  className="min-h-[120px]"
+                />
               </div>
               <Button type="submit">Submit</Button>
             </form>
@@ -120,7 +149,7 @@ export default function Component() {
         </div>
       </section>
     </div>
-  )
+  );
 }
 
 function ChevronRightIcon(props) {
@@ -139,5 +168,5 @@ function ChevronRightIcon(props) {
     >
       <path d="m9 18 6-6-6-6" />
     </svg>
-  )
+  );
 }

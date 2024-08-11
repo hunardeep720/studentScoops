@@ -1,6 +1,5 @@
 "use client";
 import { useState, useEffect, Fragment } from "react";
-import { useUserAuth } from "@/services/utils";
 import { formatPhoneNumber, formatPostalCode } from "@/Constant/formated";
 import Modal from "@/Components/Modal";
 import { TermsOfUse, PrivacyPolicy } from "../../companyPolicies";
@@ -11,7 +10,6 @@ const PersonalInfo = ({
   email,
   signUp,
 }) => {
-  const { user } = useUserAuth();
   const [fname, setfName] = useState("");
   const [lname, setlName] = useState("");
   const [address, setAddress] = useState("");
@@ -270,7 +268,7 @@ const PersonalInfo = ({
             ) : (
               <div className="overflow-y-auto max-h-[400px]">
                 {modalMessage.map((item) => (
-                  <div className="bg-slate-100 p-3">
+                  <div className="bg-slate-100 p-3" key={item.heading}>
                     <p className="font-semibold">{item.heading}</p>
                     <p>{item.description}</p>
                   </div>

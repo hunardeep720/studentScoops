@@ -71,10 +71,10 @@ const DealoftheDay = () => {
               Deal of the Day
             </div>
             <h2 className="text-3xl font-bold tracking-tight sm:text-4xl text-gray-800 dark:text-gray-100">
-              Today's Top Discounted Meal
+              Today&apos;s Top Discounted Meal
             </h2>
             <p className="max-w-3xl mx-auto text-gray-500 dark:text-gray-400 md:text-lg lg:text-base">
-              Check out the amazing deal of the day and don't miss your chance to enjoy a delicious meal at a discounted price.
+              Check out the amazing deal of the day and don&apos;t miss your chance to enjoy a delicious meal at a discounted price.
             </p>
             <div className="relative mb-10">
               <Card className="w-full max-w-3xl mx-auto p-4 shadow-md bg-white dark:bg-gray-800 transition transform hover:scale-105 duration-300">

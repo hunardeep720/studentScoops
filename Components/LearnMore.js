@@ -13,7 +13,7 @@ export default function LearnMore({ setShow }) {
       </div>
       <div className="w-full lg:w-1/2 py-16 px-11 flex flex-col justify-center">
         <h2 className="text-3xl mb-4 text-black">Why Student Scoops?</h2>
-        <p className="mb-4 text-sm"> Our platform bridges this gap by offering affordable meal options that fit within a student's budget. 
+        <p className="mb-4 text-sm"> Our platform bridges this gap by offering affordable meal options that fit within a student&apos;s budget. 
         By partnering with local restaurants and cafes, we ensure that students can enjoy a variety of delicious and nutritious meals without 
         breaking the bank.
         Join Student Scoops today and start savoring the benefits of great deals and even greater food!</p>

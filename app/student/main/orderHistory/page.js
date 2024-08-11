@@ -152,7 +152,7 @@ export default function Component() {
         ) : (
           <>
             <div className="flex w-full text-center justify-center items-center font-bold text-lg">
-              You don't have any orders to pick up.
+              You don&apos;t have any orders to pick up.
             </div>
           </>
         )}
@@ -224,7 +224,7 @@ export default function Component() {
           </>
         ) : (
           <div className="flex h-screen w-full text-center justify-center items-center text-3xl animate-pulse">
-            You don't have any past orders.
+            You don&apos;t have any past orders.
           </div>
         )}
       </section>

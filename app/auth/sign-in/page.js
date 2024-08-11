@@ -7,25 +7,25 @@ import Link from "next/link";
 import { sendPasswordResetEmail } from "firebase/auth";
 import Modal from "@/Components/Modal";
 import { BiSolidCommentError } from "react-icons/bi";
-import Loading from "@/app/loading"; 
+import Loading from "@/app/loading";
 
-const sign_in = () => {
+const SignIn = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loginError, setLoginError] = useState("");
   const [signInWithEmailAndPassword] = useSignInWithEmailAndPassword(auth);
-  const [emailError, setEmailError] = useState('');
+  const [emailError, setEmailError] = useState("");
   const [loading, setLoading] = useState(false);
   const router = useRouter();
   const [showModal, setShowModal] = useState(false);
-  
+
   const handleSignIn = () => {
     // Check the email domain first
-    if (!email.endsWith('@edu.sait.ca')) {
-      setEmailError('Please use a SAIT student email');
+    if (!email.endsWith("@edu.sait.ca")) {
+      setEmailError("Please use a SAIT student email");
       return;
     } else {
-      setEmailError(''); // Clear any previous error
+      setEmailError(""); // Clear any previous error
     }
 
     setLoading(true);
@@ -50,11 +50,11 @@ const sign_in = () => {
     event.preventDefault();
 
     // Check the email domain first
-    if (!email.endsWith('@edu.sait.ca')) {
-      setEmailError('Please use a SAIT student email');
+    if (!email.endsWith("@edu.sait.ca")) {
+      setEmailError("Please use a SAIT student email");
       return;
     } else {
-      setEmailError(''); // Clear any previous error
+      setEmailError(""); // Clear any previous error
     }
 
     sendPasswordResetEmail(auth, email)
@@ -65,7 +65,7 @@ const sign_in = () => {
       })
       .catch((err) => {
         console.log(err);
-        setEmailError('Failed to send password reset email'); // Display a generic error message
+        setEmailError("Failed to send password reset email"); // Display a generic error message
       });
   };
 
@@ -76,13 +76,12 @@ const sign_in = () => {
   return (
     <div
       className="min-h-screen py-40"
-      style={{ 
+      style={{
         backgroundImage: "url(/assets/images/loginCover.jpg)",
         backgroundSize: "cover", // Adjusts the size of the background image
         backgroundPosition: "center", // Centers the background image
         backgroundRepeat: "no-repeat", // Prevents the background image from repeating
-
-          }}
+      }}
     >
       <Fragment>
         <div className=" mx-auto  absolute inset-0 flex flex-col items-center justify-center bg-black bg-opacity-50">
@@ -113,9 +112,18 @@ const sign_in = () => {
                 />
               </div>
               <div>
-                {loginError && <div className="text-red-500 text-sm mb-4 flex"><BiSolidCommentError className='mt-1 mr-2' />{loginError}</div>}
-                {emailError && <div className="text-red-500 text-sm mb-4 flex"><BiSolidCommentError className='mt-1 mr-2' />{emailError}</div>}
-
+                {loginError && (
+                  <div className="text-red-500 text-sm mb-4 flex">
+                    <BiSolidCommentError className="mt-1 mr-2" />
+                    {loginError}
+                  </div>
+                )}
+                {emailError && (
+                  <div className="text-red-500 text-sm mb-4 flex">
+                    <BiSolidCommentError className="mt-1 mr-2" />
+                    {emailError}
+                  </div>
+                )}
               </div>
               <div className="mt-5">
                 <p
@@ -138,7 +146,7 @@ const sign_in = () => {
 
               <div className="mt-3">
                 <span className="flex text-black">
-                  <p>Don't have an account?</p>
+                  <p>Don&apos;t have an account?</p>
                   <Link
                     href="/auth/register"
                     className="text-yellow-500 font-semibold ml-2"
@@ -173,7 +181,12 @@ const sign_in = () => {
                     required
                     className="border border-gray-400 py-1 px-2 w-full rounded-md"
                   />
-                  {emailError && <div className="text-red-500 text-sm mb-4 flex"><BiSolidCommentError className='mt-1 mr-2' />{emailError}</div>}
+                  {emailError && (
+                    <div className="text-red-500 text-sm mb-4 flex">
+                      <BiSolidCommentError className="mt-1 mr-2" />
+                      {emailError}
+                    </div>
+                  )}
                 </div>
                 <div>
                   <button
@@ -192,4 +205,4 @@ const sign_in = () => {
   );
 };
 
-export default sign_in;
+export default SignIn;

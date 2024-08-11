@@ -221,7 +221,7 @@ export default function Settings() {
                       Email Support
                     </p>
                     <p className="text-sm text-gray-500 dark:text-gray-400">
-                      Send us a message and we'll get back to you.
+                      Send us a message and we&apos;ll get back to you.
                     </p>
                   </div>
                   <div className="ml-auto">

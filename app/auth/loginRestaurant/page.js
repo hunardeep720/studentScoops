@@ -10,8 +10,7 @@ import { getRestaurantDataForLogin } from "@/services/GetRequest/getRequest";
 import Loading from "@/app/loading";
 import ContactUs from "@/Components/ContactUs";
 
-
-const sign_in = () => {
+const SignIn = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loginError, setLoginError] = useState("");
@@ -33,7 +32,11 @@ const sign_in = () => {
       })
       .then(async (uid) => {
         console.log("uid: ", uid);
-        if(!uid){setLoginError("Please try again");setLoading(false); return;}
+        if (!uid) {
+          setLoginError("Please try again");
+          setLoading(false);
+          return;
+        }
         const login = await getRestaurantDataForLogin(uid);
         console.log("login: ", login);
         if (login.length <= 0) {
@@ -145,21 +148,23 @@ const sign_in = () => {
                   Sign In
                 </button>
                 <div className="mt-3">
-                <span className="flex text-black">
-                  <p>You Have an issue to Sign In?</p>
-                  <button
-                    onClick={() => {  setShowModal(true); }}
-                    className="text-yellow-500 font-semibold ml-2"
-                  >
-                    Contact Us
-                  </button>
-                </span>
-              </div>
+                  <span className="flex text-black">
+                    <p>You Have an issue to Sign In?</p>
+                    <button
+                      onClick={() => {
+                        setShowModal(true);
+                      }}
+                      className="text-yellow-500 font-semibold ml-2"
+                    >
+                      Contact Us
+                    </button>
+                  </span>
+                </div>
               </div>
             </div>
           </div>
         </div>
-        
+
         <Modal
           isVisible={showModal}
           onClose={() => {
@@ -203,11 +208,11 @@ const sign_in = () => {
           </div>
         </Modal>
         <Modal isVisible={showModal} onClose={() => setShowModal(false)}>
-         <ContactUs setShow={() => setShowModal(false)} />
-       </Modal>
+          <ContactUs setShow={() => setShowModal(false)} />
+        </Modal>
       </Fragment>
     </div>
   );
 };
 
-export default sign_in;
+export default SignIn;

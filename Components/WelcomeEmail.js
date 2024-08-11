@@ -13,7 +13,7 @@ const WelcomeEmail = ({ name, link }) => {
             Dear {name},
           </p>
           <p className="text-gray-700 mb-4">
-            We're thrilled to have you on board. At Student Scoops, we aim to provide the best resources and community for students worldwide.
+            We&apos;re thrilled to have you on board. At Student Scoops, we aim to provide the best resources and community for students worldwide.
           </p>
           <p className="text-gray-700 mb-4">
             Here are some links to get you started:
