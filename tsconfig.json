@@ -28,7 +28,7 @@
     ".next/types/**/*.ts",
     "**/*.ts",
     "**/*.tsx"
-  ],
+, "app/auth/register/enter_information/page.js"  ],
   "exclude": [
     "node_modules"
   ]

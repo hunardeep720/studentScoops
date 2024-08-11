@@ -18,8 +18,9 @@ import {
 } from "@/services/GetRequest/getRequest";
 import Swal from "sweetalert2";
 import Image from "next/image";
+import PropTypes from 'prop-types';
 
-export default function CheckoutCart({ studentData }) {
+const CheckoutCart = ({ studentData }) => {
   const [subtotal, setSubtotal] = useState(0);
   const [cartItems, setCartItems] = useState(null); // for the items which are placed in student cart
   const router = useRouter();
@@ -248,3 +249,7 @@ function ShoppingCartIcon(props) {
     </svg>
   );
 }
+CheckoutCart.propTypes = {
+  studentData: PropTypes.any.isRequired, // Replace `any` with a more specific type if possible
+};
+export default CheckoutCart;
