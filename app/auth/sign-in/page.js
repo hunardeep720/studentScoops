@@ -5,7 +5,7 @@ import { auth } from "@/app/firebase/config";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { sendPasswordResetEmail } from "firebase/auth";
-import Modal from "@/components/Modal";
+import Modal from "@/Components/Modal";
 import { BiSolidCommentError } from "react-icons/bi";
 import Loading from "@/app/loading"; 
 

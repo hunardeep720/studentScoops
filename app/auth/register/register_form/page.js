@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import zxcvbn from "zxcvbn";
 import "react-toastify/dist/ReactToastify.css";
 import { sendMail } from "@/lib/mail";
-import WelcomeEmail from "@/components/WelcomeEmail"
+import WelcomeEmail from "@/Components/WelcomeEmail"
 import ReactDOMServer from 'react-dom/server';
 //icons
 import { FaCheckCircle } from "react-icons/fa";
