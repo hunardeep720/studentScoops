@@ -223,7 +223,7 @@ export default function Component() {
             </p>
           </div>
           <div className="py-4">{orderId && orderId.map((item)=>{
-            return <p className="font-bold text-2xl">Order Number: #{item}</p>
+            return <p key={item} className="font-bold text-2xl">Order Number: #{item}</p>
           })}</div>
           <div className="mt-12 w-full max-w-md">
             <Card className="p-8 shadow-lg rounded-lg bg-white">
