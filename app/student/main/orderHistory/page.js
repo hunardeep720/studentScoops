@@ -8,7 +8,7 @@ import {
   removeItemFromStudentMenu,
   deleteHistoryProductFromStudent,
 } from "@/services/PostRequest/postRequest";
-import { Button } from "@/components/ui/button";
+import { Button } from "@/Components/ui/button";
 import { useRouter } from "next/navigation";
 import {
   getStudentConfirmOrderData,
