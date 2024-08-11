@@ -25,7 +25,7 @@ import {
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
 import { MdOutlineRemove } from "react-icons/md";
 
-export default function UserProfile({ data }) {
+export default function UserProfile(data) {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
@@ -196,8 +196,7 @@ export default function UserProfile({ data }) {
         name: name,
         phoneNumber: phoneNumber,
         address: address,
-      }).then(() => {
-      });
+      }).then(() => {});
     } catch (err) {
       console.log(err);
     }

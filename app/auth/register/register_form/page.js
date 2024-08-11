@@ -3,8 +3,8 @@ import { useState, useEffect } from "react";
 import zxcvbn from "zxcvbn";
 import "react-toastify/dist/ReactToastify.css";
 import { sendMail } from "@/lib/mail";
-import WelcomeEmail from "@/Components/WelcomeEmail"
-import ReactDOMServer from 'react-dom/server';
+import WelcomeEmail from "@/Components/WelcomeEmail";
+import ReactDOMServer from "react-dom/server";
 //icons
 import { FaCheckCircle } from "react-icons/fa";
 import { AiFillCloseCircle } from "react-icons/ai";
@@ -12,11 +12,7 @@ import { BiSolidCommentError } from "react-icons/bi";
 import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
 import { getStudentEmailWithStatus } from "@/services/GetRequest/getRequest";
 
-const RegisterForm = ({
-  setUserEmail,
-  setUserPassword,
-  setShowPersonalInfo,
-}) => {
+const RegisterForm = (setUserEmail, setUserPassword, setShowPersonalInfo) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
@@ -74,8 +70,7 @@ const RegisterForm = ({
     setSpecialCharMet(/[@$!%*?&]/.test(password));
   }, [password]);
 
-  const [username] = email.split('@');
-
+  const [username] = email.split("@");
 
   //send email
   const send = async (event) => {
@@ -83,27 +78,29 @@ const RegisterForm = ({
 
     //convert the template to be readable for the user in the email
     const emailBody = ReactDOMServer.renderToString(
-        <WelcomeEmail name={username} link={"http://localhost:3000/auth/sign-in"} />
+      <WelcomeEmail
+        name={username}
+        link={"http://localhost:3000/auth/sign-in"}
+      />
     );
     try {
-        await sendMail({
-            to: email,
-            name: 'No-reply',
-            subject: 'Welcome to StudentScoops 🎉',
-            body: emailBody,
-        });
-        return console.log('confirmation Sent to: ', username)
+      await sendMail({
+        to: email,
+        name: "No-reply",
+        subject: "Welcome to StudentScoops 🎉",
+        body: emailBody,
+      });
+      return console.log("confirmation Sent to: ", username);
     } catch (error) {
-        console.error("Error sending email:", error);
-        alert("Failed to send email. Please try again.");
+      console.error("Error sending email:", error);
+      alert("Failed to send email. Please try again.");
     }
-};
+  };
 
   const handleSignUp = async () => {
     setEmailError("");
     setPassError("");
     setError("");
-    
 
     // Check the email domain
     if (!email.endsWith("@edu.sait.ca")) {
@@ -171,7 +168,6 @@ const RegisterForm = ({
       send();
     }
   };
-
 
   const getPasswordStrengthBar = (score) => {
     const strength = ["Very Weak", "Weak", "Fair", "Good", "Strong"];

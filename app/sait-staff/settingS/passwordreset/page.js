@@ -13,7 +13,7 @@ import { Input } from "@/Components/ui/input"
 import { Button } from "@/Components/ui/button"
 import { updatePassword, EmailAuthProvider, reauthenticateWithCredential } from "firebase/auth";
 
-export default function Passwordreset({auth,email}) {
+export default function Passwordreset(auth,email) {
   const user = auth.currentUser;
   const [oldPassword, setOldPassword] = useState("");
   const [newPassword, setNewPassword] = useState("");

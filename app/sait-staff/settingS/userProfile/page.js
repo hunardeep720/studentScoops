@@ -25,7 +25,7 @@ import {
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
 import { MdOutlineRemove } from "react-icons/md";
 
-export default function UserProfile({ data, getUserData }) {
+export default function UserProfile(data, getUserData) {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");

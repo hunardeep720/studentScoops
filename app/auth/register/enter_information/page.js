@@ -4,12 +4,7 @@ import { formatPhoneNumber, formatPostalCode } from "@/Constant/formated";
 import Modal from "@/Components/Modal";
 import { TermsOfUse, PrivacyPolicy } from "../../companyPolicies";
 
-const PersonalInfo = ({
-  setShowPersonalInfo,
-  setInformation,
-  email,
-  signUp,
-}) => {
+const PersonalInfo = (setShowPersonalInfo, setInformation, email, signUp) => {
   const [fname, setfName] = useState("");
   const [lname, setlName] = useState("");
   const [address, setAddress] = useState("");

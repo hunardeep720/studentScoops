@@ -1,19 +1,18 @@
-// AddressContext.js
+// address-context.js
 "use client";
-import React, { createContext, useContext, useState } from 'react';
+import React, { createContext, useState } from "react";
 
 const AddressContext = createContext();
 
-export function AddressProvider({ children }) {
-  const [address, setAddress] = useState("southern Alberta institute of technology , calgary");
-
+const AddressProvider = ({ children }) => {
+  const [address, setAddress] = useState(
+    "southern Alberta institute of technology, Calgary"
+  );
   return (
     <AddressContext.Provider value={{ address, setAddress }}>
       {children}
     </AddressContext.Provider>
   );
-}
+};
 
-export function useAddress() {
-  return useContext(AddressContext);
-}
+export { AddressProvider, AddressContext };
