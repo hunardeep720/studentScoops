@@ -18,9 +18,9 @@ import {
 } from "@/services/GetRequest/getRequest";
 import Swal from "sweetalert2";
 import Image from "next/image";
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 
-const CheckoutCart = ({ studentData }) => {
+const CheckoutCart = (studentData) => {
   const [subtotal, setSubtotal] = useState(0);
   const [cartItems, setCartItems] = useState(null); // for the items which are placed in student cart
   const router = useRouter();
@@ -206,7 +206,7 @@ const CheckoutCart = ({ studentData }) => {
       </Sheet>
     </div>
   );
-}
+};
 
 function TrashIcon(props) {
   return (
