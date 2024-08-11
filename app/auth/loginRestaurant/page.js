@@ -4,11 +4,11 @@ import { useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
 import { auth } from "@/app/firebase/config";
 import { useRouter } from "next/navigation";
 import { sendPasswordResetEmail } from "firebase/auth";
-import Modal from "@/Components/Modal";
+import Modal from "@/components/Modal";
 import { BiSolidCommentError } from "react-icons/bi";
 import { getRestaurantDataForLogin } from "@/services/GetRequest/getRequest";
 import Loading from "@/app/loading";
-import ContactUs from "@/Components/ContactUs";
+import ContactUs from "@/components/ContactUs";
 
 
 const sign_in = () => {

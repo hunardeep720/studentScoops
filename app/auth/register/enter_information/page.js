@@ -3,7 +3,7 @@ import { useState, useEffect, Fragment } from "react";
 import { useRouter } from "next/navigation";
 import { useUserAuth } from "@/services/utils";
 import { formatPhoneNumber, formatPostalCode } from "@/Constant/formated";
-import Modal from "/Components/Modal";
+import Modal from "/components/Modal";
 import { TermsOfUse, PrivacyPolicy } from "../../companyPolicies";
 
 const PersonalInfo = ({
