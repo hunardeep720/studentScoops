@@ -1,0 +1,34 @@
+merging from masterHunar (#68)
+
+* adding functionality to add user from admin side in sait-staff
+
+* resove some bugs related to sait-staff page
+
+* removing unwanted content
+
+* adding fnctionality for disable account
+
+* upadate functionality of user disable and add functionality to fetch data single time and reuse it
+
+* adding packages
+
+* for merging from maser
+
+* adding functionality of deleting user
+
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+#
+# Author:    Hunardeep Singh <HunardeepSingh@edu.sait.ca>
+#
+# interactive rebase in progress; onto c08035c
+# Last commands done (2 commands done):
+#    pick e081840 front end register pages
+#    pick f67ab5e Hunar (#68)
+# Next command to do (1 remaining command):
+#    pick a4f6886 done header component
+# You are currently rebasing branch 'hunar' on 'c08035c'.
+#
+# Changes to be committed:
+#	modified:   package-lock.json
+#

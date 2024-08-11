@@ -1,0 +1,22 @@
+@tailwind base;
+  @tailwind components;
+  @tailwind utilities;
+
+
+  .slick-slide > div {
+    margin: 0 10px;
+   
+  }
+
+  .slick-prev:before, .slick-next:before {
+    color: orange;
+  }
+
+  .slick-dots li.slick-active button:before {
+    color:orange !important;
+  }
+  
+ 
+
+
+  
