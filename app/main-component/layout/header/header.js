@@ -1,8 +1,8 @@
 'use client';
 
 import React from 'react';
-import { DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuItem } from "@/components/ui/dropdown-menu"
-import { Button } from "@/components/ui/button"
+import { DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuItem } from "@/Components/ui/dropdown-menu"
+import { Button } from "@/Components/ui/button"
 import Link from "next/link"
 import { useRouter } from 'next/navigation';
 import { IoRestaurant } from "react-icons/io5";

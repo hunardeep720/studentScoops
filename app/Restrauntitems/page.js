@@ -7,7 +7,7 @@
 
 import { useState, useEffect } from "react";
 import Link from 'next/link';
-import { Button } from "@/components/ui/button";
+import { Button } from "@/Components/ui/button";
 import CartDropdown from "./checkoutCart/page";
 
 export default function RestaurantItems() {
