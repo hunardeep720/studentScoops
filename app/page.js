@@ -3,11 +3,11 @@ import React, { useState } from 'react';
 import Header from "./main-component/layout/header/header";
 import Footer from "./main-component/layout/footer/footer";
 import { motion } from "framer-motion";
-import Modal from "@/components/Modal";
-import LearnMore from "@/components/LearnMore";
-import Reviews from "@/components/reviews";
-import ScrollTop from "@/components/ui/scrollTop";
-import SlideShow from "@/components/SlideShow"; // Import the new Carousel component
+import Modal from "@/Components/Modal";
+import LearnMore from "@/Components/LearnMore";
+import Reviews from "@/Components/reviews";
+import ScrollTop from "@/Components/ui/scrollTop";
+import SlideShow from "@/Components/SlideShow"; // Import the new Carousel component
 import { useRouter } from "next/navigation";
 
 export default function Home() {
