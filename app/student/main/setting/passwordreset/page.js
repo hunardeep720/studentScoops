@@ -28,21 +28,22 @@ export default function PasswordReset(userData) {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
+  const [credential, setCredential] = useState(null);
+  const [email, setEmail] = useState("");
 
   useEffect(() => {
     if (!userData || userData.length === 0) {
       console.error("userData is undefined or empty");
       setErrorMessage("User data is not available.");
+    } else if (userData && userData[0]) {
+      setEmail(userData[0].email);
+      setCredential(EmailAuthProvider.credential(email, oldPassword));
     }
   }, [userData]);
 
   if (!userData || userData.length === 0) {
     return <div>{errorMessage || "Loading user data..."}</div>;
   }
-
-  const email = userData[0].email;
-  const credential = EmailAuthProvider.credential(email, oldPassword);
-  console.log(email);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
