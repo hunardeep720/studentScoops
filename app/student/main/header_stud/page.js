@@ -15,7 +15,7 @@ import { getStudentDataByStudents } from "@/services/GetRequest/getRequest";
 import { useUserAuth } from "@/services/utils";
 import { useEffect, useState } from "react";
 
-export default function Header_stud({ handleSignOut }) {
+export default function Header_stud(handleSignOut) {
   const { user } = useUserAuth();
   const [studentData, setStudentData] = useState(null);
 
@@ -31,8 +31,7 @@ export default function Header_stud({ handleSignOut }) {
     }
   }, [user]);
 
-  useEffect(() => {
-  },[studentData]);
+  useEffect(() => {}, [studentData]);
   return (
     <header className="sticky top-0 z-10 flex items-center justify-between h-16 px-4 md:px-6 bg-white shadow-sm dark:bg-gray-950 m-3">
       <div className=" flex items-center gap-4">
@@ -47,7 +46,10 @@ export default function Header_stud({ handleSignOut }) {
       </div>
       <div className="flex items-center gap-4">
         {/* <CartDropdown cart={cart} addToCart={addToCart} removeFromCart={removeFromCart} getTotal={getTotal}  /> */}
-        <CartDropdown studentData={studentData} className="text-primary bg-white" />
+        <CartDropdown
+          studentData={studentData}
+          className="text-primary bg-white"
+        />
 
         <DropdownMenu>
           <DropdownMenuTrigger asChild>

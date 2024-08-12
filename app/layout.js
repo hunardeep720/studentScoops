@@ -2,7 +2,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 
 import { AuthContextProvider } from "../services/utils";
-import { AddressProvider } from "./student/address-context/page";
+import { AddressProvider } from "@/services/address-context";
 
 const inter = Inter({ subsets: ["latin"] });
 

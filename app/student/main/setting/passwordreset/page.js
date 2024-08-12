@@ -18,7 +18,7 @@ import {
 } from "firebase/auth";
 import { getAuth } from "firebase/auth";
 
-export default function PasswordReset({ userData }) {
+export default function PasswordReset(userData) {
   const user = getAuth().currentUser;
   const [showSection, setShowSection] = useState(true);
   const [showPassword, setShowPassword] = useState(false);
@@ -61,27 +61,39 @@ export default function PasswordReset({ userData }) {
       setErrorMessage("Passwords do not match");
       return;
     }
-    if(!password.match(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/)){
-      setErrorMessage("Password must contain at least 8 characters, one uppercase, one lowercase, one number, and one special character");
+    if (
+      !password.match(
+        /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/
+      )
+    ) {
+      setErrorMessage(
+        "Password must contain at least 8 characters, one uppercase, one lowercase, one number, and one special character"
+      );
     }
 
-    reauthenticateWithCredential(user, credential).then(()=>{
-      updatePassword(user,password).then(()=>{
-        alert("Password updated successfully");
-        setOldPassword("");
-        setPassword("");
-        setConfirmPassword("");
-      }).catch((error)=>{
-        alert("Error updating password: ",error);
+    reauthenticateWithCredential(user, credential)
+      .then(() => {
+        updatePassword(user, password)
+          .then(() => {
+            alert("Password updated successfully");
+            setOldPassword("");
+            setPassword("");
+            setConfirmPassword("");
+          })
+          .catch((error) => {
+            alert("Error updating password: ", error);
+          });
       })
-    }).catch((error)=>{
-      if(error == "FirebaseError: Firebase: Error (auth/invalid-credential)."){
-        alert("Invalid old password");
-        return;
-      }
-      alert("Error reauthenticating user: ",error);
-      console.log(error)
-    })
+      .catch((error) => {
+        if (
+          error == "FirebaseError: Firebase: Error (auth/invalid-credential)."
+        ) {
+          alert("Invalid old password");
+          return;
+        }
+        alert("Error reauthenticating user: ", error);
+        console.log(error);
+      });
   };
 
   return (
@@ -140,7 +152,9 @@ export default function PasswordReset({ userData }) {
                 onChange={(e) => setConfirmPassword(e.target.value)}
               />
             </div>
-            {errorMessage && <p className="text-red-500 text-sm">{errorMessage}</p>}
+            {errorMessage && (
+              <p className="text-red-500 text-sm">{errorMessage}</p>
+            )}
           </CardContent>
           <CardFooter>
             <Button type="submit" className="w-full">

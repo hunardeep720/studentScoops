@@ -6,7 +6,7 @@ import { Button } from "@/Components/ui/button";
 import { Avatar, AvatarImage, AvatarFallback } from "@/Components/ui/avatar";
 import Map from "../map/map"; // Adjust the import path based on your file structure
 import Link from "next/link";
-import { useAddress } from "../../address-context/page";
+import { useAddress } from "@/services/address-context";
 import { useRouter } from "next/navigation";
 import {
   Dialog,

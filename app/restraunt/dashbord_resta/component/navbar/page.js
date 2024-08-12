@@ -2,15 +2,8 @@
 import React from "react";
 import Link from "next/link";
 import { Home, Package, ShoppingCart, Users } from "lucide-react";
-import { useUserAuth } from "@/services/utils";
 
 export default function Navbar() {
-  const { user } = useUserAuth();
-  // useEffect(()=>{
-  //   if (user == false || !user){
-  //     route.push('./auth/loginRestaurant')
-  //   }
-  // },[])
   return (
     <div className="hidden border-r bg-muted/40 md:block">
       <div className="flex h-full max-h-screen flex-col gap-2">

@@ -3,7 +3,7 @@
 import { useState } from "react"
 import { Button } from "@/Components/ui/button"
 import { useRouter } from "next/navigation"
-import { useAddress } from "./address-context/page" // Adjust the import path to where AddressContext is located
+import { useAddress } from "@/services/address-context" // Adjust the import path to where AddressContext is located
 import Layout from "./transtion/Layout"
 
 export default function Component() {

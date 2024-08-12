@@ -4,7 +4,7 @@ import  React, { useState } from "react"
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogFooter } from "@/Components/ui/dialog"
 import { Input } from "@/Components/ui/input"
 import { Button } from "@/Components/ui/button"
-import { useAddress } from "../address-context/page"
+import { useAddress } from "@/services/address-context"
 
 export default function Component() {
   const [isOpen, setIsOpen] = useState(false)
