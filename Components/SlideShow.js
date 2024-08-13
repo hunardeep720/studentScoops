@@ -38,7 +38,7 @@ const Slideshow = () => {
     ),
   };
   return (
-    <div className="w-full max-w-screen-2xl mx-auto">
+    <div className="w-full max-w-screen-2xl" style={{marginLeft: "auto", marginRight: "auto"}}>
       <Zoom {...zoomInProperties}>
         {images.map((each, index) => (
           <div className="w-full" key={index}>
