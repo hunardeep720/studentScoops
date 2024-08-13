@@ -10,11 +10,7 @@ import {
   Carousel,
   CarouselContent,
   CarouselItem,
-  CarouselPrevious,
-  CarouselNext,
-} from "@/components/ui/carousel";
-import { GrPrevious } from "react-icons/gr";
-import { GrNext } from "react-icons/gr";
+} from "@/Components/ui/carousel";
 
 const Slideshow = () => {
   //Array of Images
