@@ -11,6 +11,7 @@ import {
   CarouselContent,
   CarouselItem,
 } from "@/Components/ui/carousel";
+import Image from "next/image";
 
 const Slideshow = () => {
   //Array of Images
@@ -43,10 +44,10 @@ const Slideshow = () => {
         {images.map((each, index) => (
           <div className="w-full" key={index}>
             <div className="relative">
-              <Carousel className="w-full m-2">
+              <Carousel className="w-full m-2" >
                 <CarouselContent>
                   <CarouselItem>
-                    <img className="w-screen" src={each} />
+                    <Image src={each} width={500} height={500} layout="responsive" style={{objectFit:"cover",objectPosition:"center"}}/>
                   </CarouselItem>
                 </CarouselContent>
               </Carousel>

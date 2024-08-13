@@ -83,7 +83,7 @@ export default function Home() {
             <Slideshow />
           </section>
 
-          <section className="w-full py-12 md:py-24 lg:py-32  mt-6 bg-[#f8f9fa] dark:bg-[#2b2b2b]">
+          <section className="w-full py-12 md:py-24 lg:py-32  mt-6 bg-[#f8f9fa] dark:bg-[#2b2b2b] max-w-screen-2xl mx-auto">
             <Reviews />
           </section>
         </div>
