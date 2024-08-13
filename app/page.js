@@ -1,7 +1,7 @@
 "use client"
 import React, { useState } from 'react';
-import Header from "./main-component/layout/header/header";
-import Footer from "./main-component/layout/footer/footer";
+import Header from "./main-component/layout/header/page";
+import Footer from "./main-component/layout/footer/page";
 import { motion } from "framer-motion";
 import Modal from "@/Components/Modal";
 import LearnMore from "@/Components/LearnMore";
