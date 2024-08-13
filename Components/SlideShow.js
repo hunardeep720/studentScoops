@@ -41,12 +41,12 @@ const Slideshow = () => {
     <div className="w-full max-w-screen-2xl mx-auto">
       <Zoom {...zoomInProperties}>
         {images.map((each, index) => (
-          <div className="w-full">
+          <div className="w-full" key={index}>
             <div className="relative">
               <Carousel className="w-full m-2">
                 <CarouselContent>
                   <CarouselItem>
-                  <img className="w-screen" src={each} />
+                    <img className="w-screen" src={each} />
                   </CarouselItem>
                 </CarouselContent>
               </Carousel>
