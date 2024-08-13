@@ -1,7 +1,8 @@
+"use client";
 import { useEffect, useRef, useState } from "react";
 import { Loader } from "@googlemaps/js-api-loader";
 
-function Map({ restaurantAddress, studentAddress, onEstimatedTimeChange }) {
+function Map(restaurantAddress, studentAddress, onEstimatedTimeChange) {
   const mapRef = useRef(null);
   const [map, setMap] = useState(null);
 
@@ -51,11 +52,15 @@ function Map({ restaurantAddress, studentAddress, onEstimatedTimeChange }) {
                 }
               );
             } else {
-              console.error(`Geocode was not successful for the student address: ${status}`);
+              console.error(
+                `Geocode was not successful for the student address: ${status}`
+              );
             }
           });
         } else {
-          console.error(`Geocode was not successful for the restaurant address: ${status}`);
+          console.error(
+            `Geocode was not successful for the restaurant address: ${status}`
+          );
         }
       });
     });

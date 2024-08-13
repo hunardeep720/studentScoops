@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import { Card, CardHeader, CardTitle, CardContent } from "@/Components/ui/card";
 import { Button } from "@/Components/ui/button";
 import { Avatar, AvatarImage, AvatarFallback } from "@/Components/ui/avatar";
-import Map from "../map/map"; // Adjust the import path based on your file structure
+import Map from "../map/page"; // Adjust the import path based on your file structure
 import Link from "next/link";
 import { useAddress } from "@/services/address-context";
 import { useRouter } from "next/navigation";

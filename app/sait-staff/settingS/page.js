@@ -13,7 +13,7 @@ import { deleteSaitUser } from "@/services/PostRequest/postRequest";
 import { useRouter } from "next/navigation";
 import UserProfile from "./userProfile/page";
 
-export default function Settings({ data, getUserData }) {
+export default function Settings(data, getUserData) {
   const route = useRouter();
   const [userEmail, setUserEmail] = useState("");
   const { user } = useUserAuth();

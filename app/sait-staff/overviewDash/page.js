@@ -1,15 +1,26 @@
+"use client";
 import Overview from "./overview";
 import Table from "./table";
 import { useState, useEffect } from "react";
 import Add from "./Add";
 import Edit from "./Edit";
 import { useUserAuth } from "@/services/utils";
-import { updateSaitEmployeeStatus, deleteSaitUserFromAdmin } from "@/services/PostRequest/postRequest";
+import {
+  updateSaitEmployeeStatus,
+  deleteSaitUserFromAdmin,
+} from "@/services/PostRequest/postRequest";
 import { getAuth } from "firebase/auth";
 import { useRouter } from "next/navigation";
 import Swal from "sweetalert2";
 
-export default function Dash({ fetchData, fetchDataByUser, data, adminData, students, restaurants }) {
+export default function Dash(
+  fetchData,
+  fetchDataByUser,
+  data,
+  adminData,
+  students,
+  restaurants
+) {
   const auth = getAuth();
   const router = useRouter();
   const [userData, setUserData] = useState(null);
@@ -50,7 +61,6 @@ export default function Dash({ fetchData, fetchDataByUser, data, adminData, stud
     setIsEditing(true);
   };
 
-
   //handle to delte user form auth,storage and firestore
   const handleDelete = async (uid, docId) => {
     // Handle delete logic
@@ -59,7 +69,7 @@ export default function Dash({ fetchData, fetchDataByUser, data, adminData, stud
         Swal.fire("You can't delete your own account");
         return;
       }
-      console.log('role: ',userData[0].role);
+      console.log("role: ", userData[0].role);
       if (userData[0].role === "Admin" || userData[0].role === "Editor") {
         try {
           const res = await fetch("api/deleteUser", {
@@ -67,15 +77,15 @@ export default function Dash({ fetchData, fetchDataByUser, data, adminData, stud
             headers: {
               "Content-Type": "application/json",
             },
-            body: JSON.stringify({uid:uid}),
+            body: JSON.stringify({ uid: uid }),
           });
 
           const data = await res.json();
           console.log("data: ", data);
           if (data.message === "User has been deleted") {
-            await deleteSaitUserFromAdmin(docId,uid).then(()=>{
+            await deleteSaitUserFromAdmin(docId, uid).then(() => {
               Swal.fire("User has been deleted ❌");
-            })
+            });
           }
         } catch (error) {
           console.error("An error occurred:", error);
@@ -84,7 +94,6 @@ export default function Dash({ fetchData, fetchDataByUser, data, adminData, stud
       }
     }
   };
-
 
   //to change the status of the user
   const handleChangeStatus = async (id, status, uid) => {
@@ -133,7 +142,7 @@ export default function Dash({ fetchData, fetchDataByUser, data, adminData, stud
     <div className="min-h-screen flex flex-col items-center justify-start py-2">
       <main className="flex flex-col items-start w-full px-20 py-4 ">
         <div className="self-start ml-5">
-          <Overview studentData={students} restaurantData={restaurants}/>
+          <Overview studentData={students} restaurantData={restaurants} />
         </div>
         <div className="flex flex-col items-center w-full mt-8">
           {isAdding ? (

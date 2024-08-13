@@ -1,8 +1,8 @@
 "use client";
-import SDashboard from "./SDashboard";
-import RDashboard from "./RDashboard";
-import Dash from "./overviewDash";
-import Settings from "./settingS";
+import SDashboard from "./SDashboard/page";
+import RDashboard from "./RDashboard/page";
+import Dash from "./overviewDash/page";
+import Settings from "./settingS/page";
 import { LuLogOut } from "react-icons/lu";
 import UserGreeting from "@/Components/UserGreeting";
 //import navbar
