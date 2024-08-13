@@ -25,7 +25,7 @@ export default function Header() {
   return (
     <header className="sticky top-0 z-10 flex items-center justify-between p-4 bg-primary" style={{zIndex:50}}>
       <div className="text-white font-semibold text-2xl">STUDENT SCOOPS</div>
-      <DropdownMenu style={{ zIndex: 20 }}>
+      <DropdownMenu style={{ zIndex: 60 }}>
         <DropdownMenuTrigger asChild>
           <Button
             variant="default"
