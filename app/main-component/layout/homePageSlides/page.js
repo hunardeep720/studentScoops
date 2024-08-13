@@ -39,15 +39,34 @@ const Slideshow = () => {
     ),
   };
   return (
-    <div className="w-full max-w-screen-2xl" style={{marginLeft: "auto", marginRight: "auto"}}>
+    <div
+      className="w-full max-w-screen-2xl"
+      style={{ marginLeft: "auto", marginRight: "auto" }}
+    >
       <Zoom {...zoomInProperties}>
         {images.map((each, index) => (
           <div className="w-full" key={index}>
             <div className="relative">
-              <Carousel className="w-full m-2" >
-                <CarouselContent>
-                  <CarouselItem className="block sm:flex justify-center -ml-4">
-                    <Image src={each} width={500} height={500} layout="responsive" style={{objectFit:"cover",objectPosition:"center"}}/>
+              <Carousel className="w-full m-2">
+                <CarouselContent
+                  style={{
+                    display: "block",
+                    justifyContent: "center",
+                    marginLeft: "-1rem", // Tailwind uses 4 for 1rem
+                    "@media (min-width: 640px)": {
+                      // sm breakpoint in Tailwind
+                      display: "flex",
+                    },
+                  }}
+                >
+                  <CarouselItem>
+                    <Image
+                      src={each}
+                      width={500}
+                      height={500}
+                      layout="responsive"
+                      style={{ objectFit: "cover", objectPosition: "center" }}
+                    />
                   </CarouselItem>
                 </CarouselContent>
               </Carousel>
