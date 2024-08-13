@@ -46,7 +46,7 @@ const Slideshow = () => {
             <div className="relative">
               <Carousel className="w-full m-2" >
                 <CarouselContent>
-                  <CarouselItem>
+                  <CarouselItem className="block sm:flex justify-center -ml-4">
                     <Image src={each} width={500} height={500} layout="responsive" style={{objectFit:"cover",objectPosition:"center"}}/>
                   </CarouselItem>
                 </CarouselContent>
