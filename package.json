@@ -36,6 +36,7 @@
     "clsx": "^2.1.1",
     "core-js": "^3.37.1",
     "date-fns": "^3.6.0",
+    "embla-carousel-react": "^8.1.8",
     "esbuild-plugin-jsx": "^1.0.1",
     "firebase": "^10.12.3",
     "firebase-admin": "^12.2.0",

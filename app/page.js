@@ -77,7 +77,7 @@ export default function Home() {
             </div>
           </section>
 
-          <section className="w-full h-screen py-12 md:py-24 lg:py-32  items-center justify-center">
+          <section className="w-full py-12 md:py-24 lg:py-32  items-center justify-center">
             <SlideShow />
           </section>
 
