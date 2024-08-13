@@ -23,12 +23,12 @@ function Modal({ isVisible, onClose, children }) {
       >
         <div
           className="fixed inset-0 backdrop-blur flex justify-center items-center"
-          style={{ zIndex: 20, backgroundColor: "rbg(0 0 0 /0.75)" }}
+          style={{ zIndex: 20, backgroundColor: "rgb(0 0 0 /0.75)" }}
           id="wrapper"
           onClick={handleClose}
         >
           <div
-            className="w-[600px] flex flex-col mx-4"
+            className="w-[600px] flex flex-col mx-4 mt-12"
             style={{ maxWidth: "1280px" }}
           >
             <div className="flex w-full justify-end right-7">
