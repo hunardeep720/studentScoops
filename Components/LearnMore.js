@@ -5,13 +5,13 @@ import {motion} from "framer-motion";
 //reference => youtube tutorial 
 export default function LearnMore({ setShow }) {
   return (
-    <div className="flex flex-col lg:flex-row w-full h-full bg-white rounded-xl mx-auto shadow-xl overflow-hidden text-black">
+    <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 w-full h-full bg-white rounded-xl mx-auto shadow-xl overflow-hidden text-black">
       <div
-        className="w-full lg:w-1/2 flex flex-col items-center justify-center p-12 bg-no-repeat bg-cover bg-center"
+        className="w-full flex flex-col items-center justify-center p-12 bg-no-repeat bg-cover bg-center"
         style={{ backgroundImage: "url(/assets/images/modal.jpg)" }}
       >
       </div>
-      <div className="w-full lg:w-1/2 py-16 px-11 flex flex-col justify-center">
+      <div className="w-full py-16 px-10 flex flex-col justify-center">
         <h2 className="text-3xl mb-4 text-black">Why Student Scoops?</h2>
         <p className="mb-4 text-sm"> Our platform bridges this gap by offering affordable meal options that fit within a student&apos;s budget. 
         By partnering with local restaurants and cafes, we ensure that students can enjoy a variety of delicious and nutritious meals without 
