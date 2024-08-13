@@ -30,7 +30,7 @@ export default function Header() {
           <IoIosArrowDown className=" ml-2 h-4 w-4" />
         </Button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent className="w-40 rounded-md bg-white p-2 shadow-lg dark:bg-gray-800  ">
+      <DropdownMenuContent className="w-40 rounded-md bg-white p-2 shadow-lg dark:bg-gray-800 z-20">
         <DropdownMenuItem>
           <Link href="/auth/sign-in" className="flex items-center gap-2 hover:text-primary " prefetch={false} >
             <PiStudentFill className="h-4 w-4" />
