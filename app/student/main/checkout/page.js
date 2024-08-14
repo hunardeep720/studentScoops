@@ -54,7 +54,6 @@ export default function Component() {
   // State to manage the estimated time for pickup
   const [estimatedTime, setEstimatedTime] = useState("");
   const [cartItems, setCartItems] = useState(null);
-  const [isPaymentOpen, setIsPaymentOpen] = useState(false);
   const [studentData, setStudentData] = useState(null);
   const [restaurantInfo, setRestaurantInfo] = useState(null);
   const [taxAmmount, setTaxAmmount] = useState(0);

@@ -143,9 +143,8 @@ const SignIn = () => {
                   Sign In
                 </button>
               </div>
-
               <div className="mt-3">
-                <span className="flex text-black">
+                <span className="flex  text-black">
                   <p>Don&apos;t have an account?</p>
                   <Link
                     href="/auth/register"

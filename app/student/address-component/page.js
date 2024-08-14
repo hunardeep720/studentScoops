@@ -42,7 +42,16 @@ export default function Component() {
         <ChevronDownIcon className="w-5 h-5 text-black" />
       </div>
 
-      <Dialog open={isOpen} onOpenChange={setIsOpen}>
+      <Dialog
+        open={isOpen}
+        onOpenChange={setIsOpen}
+        style={{
+          backgroundColor: "rbg(0 0 0 / 0.01)",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
         <DialogContent>
           <DialogHeader>
             <DialogTitle>Change Address</DialogTitle>
