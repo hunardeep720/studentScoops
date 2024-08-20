@@ -36,22 +36,26 @@ export default function UserProfile(data, getUserData) {
   const [uploading, setUploading] = useState(false);
 
   useEffect(() => {
-    if (data && data[0]) {
-      setName(data[0].name);
-      setEmail(data[0].email);
-      setPhoneNumber(data[0].phoneNumber);
-      setAddress(data[0].address);
-      setRole(data[0].role);
-      setImageUrl(data[0].imageUrl);
+    if (data && data.data[0]) {
+      setName(data.data[0].name);
+      setEmail(data.data[0].email);
+      setPhoneNumber(data.data[0].phoneNumber);
+      setAddress(data.data[0].address);
+      setRole(data.data[0].role);
+      setImageUrl(data.data[0].imageUrl);
       setUploading(false);
     }
+    console.log("setting data: ", data.data[0]);
   }, [data]);
 
   useEffect(() => {
-    if (!data[0].imageUrl || data[0].imageUrl === null) {
+    if (
+      (data.data[0] && !data.data[0].imageUrl) ||
+      (data.data[0] && data.data[0].imageUrl === null)
+    ) {
       setImageUrl("/assets/images/UserDefaultSaitStaff.png");
     } else {
-      setImageUrl(data[0].imageUrl);
+      setImageUrl(data.data[0] && data.data[0].imageUrl);
     }
   }, [imageUrl]);
 
@@ -62,7 +66,7 @@ export default function UserProfile(data, getUserData) {
   async function uploadImage(image) {
     try {
       const storage = getStorage();
-      const folderRef = ref(storage, `Saitstaff/${data[0].uid}`);
+      const folderRef = ref(storage, `Saitstaff/${data.data[0].uid}`);
 
       const deleteFolder = async (folderRef) => {
         const res = await listAll(folderRef);
@@ -78,7 +82,7 @@ export default function UserProfile(data, getUserData) {
       await deleteFolder(folderRef).then(() => {
         const storageRef = ref(
           storage,
-          `Saitstaff/${data[0].uid}/${image.name}`
+          `Saitstaff/${data.data[0].uid}/${image.name}`
         );
         const uploadTask = uploadBytesResumable(storageRef, image);
         uploadTask.on(
@@ -104,7 +108,7 @@ export default function UserProfile(data, getUserData) {
 
             try {
               // Query to find the restaurant document with the matching userId
-              const docRef = doc(db, "saitStaff", data[0].id);
+              const docRef = doc(db, "saitStaff", data.data[0].id);
               await updateDoc(docRef, {
                 imageUrl: downloadURL,
               }).then(() => {
@@ -127,7 +131,7 @@ export default function UserProfile(data, getUserData) {
   async function removeImage() {
     try {
       const storage = getStorage();
-      const folderRef = ref(storage, `Saitstaff/${data[0].uid}`);
+      const folderRef = ref(storage, `Saitstaff/${data.data[0].uid}`);
 
       const deleteFolder = async (folderRef) => {
         const res = await listAll(folderRef);
@@ -143,12 +147,12 @@ export default function UserProfile(data, getUserData) {
       await deleteFolder(folderRef).then(async () => {
         try {
           // Query to find the restaurant document with the matching userId
-          const docRef = doc(db, "saitStaff", data[0].id);
+          const docRef = doc(db, "saitStaff", data.data[0].id);
           await updateDoc(docRef, {
             imageUrl: null,
           }).then(() => {
             alert("Image uploaded successfully");
-            getUserData();
+            data.getUserData();
           });
         } catch (error) {
           console.error("Error writing document: ", error);
@@ -195,7 +199,7 @@ export default function UserProfile(data, getUserData) {
   async function updateProfile(e) {
     e.preventDefault();
     try {
-      const docRef = doc(db, "saitStaff", data[0].id);
+      const docRef = doc(db, "saitStaff", data.data[0].id);
       await updateDoc(docRef, {
         name: name,
         phoneNumber: phoneNumber,
@@ -211,7 +215,7 @@ export default function UserProfile(data, getUserData) {
   return (
     // Changes to be made here
     <>
-      {data && data[0] ? (
+      {data && data.data[0] ? (
         <div className="mx-full max-w-md">
           <div className="mx-auto grid items-center justify-center w-[200%]">
             <div
@@ -254,7 +258,7 @@ export default function UserProfile(data, getUserData) {
                 </div>
               </div>
             </div>
-            <h1 className="text-3xl font-bold mx-auto my-10">{data[0].name}</h1>
+            <h1 className="text-3xl font-bold mx-auto my-10">{data.data[0].name}</h1>
           </div>
           <Card className="w-[200%]">
             <CardContent className="grid grid-cols-2 gap-5 mt-6">
