@@ -14,10 +14,8 @@ import { useRouter } from "next/navigation";
 import Swal from "sweetalert2";
 
 export default function Dash(
-  fetchData,
-  fetchDataByUser,
-  data,
-  adminData,
+  { fetchData, adminData, data, fetchDataByUser },
+
   students,
   restaurants
 ) {
@@ -31,6 +29,7 @@ export default function Dash(
   const [isEditing, setIsEditing] = useState(false);
 
   useEffect(() => {
+    console.log("adminData dash page: ", adminData);
     if (adminData) {
       setAdmin(adminData);
     }
@@ -38,11 +37,17 @@ export default function Dash(
       setUserData(data);
     }
   }, [adminData]);
+  useEffect(() => {
+    if (userData) {
+      console.log("userData dash page", userData);
+    }
+  }, [userData]);
 
   useEffect(() => {
     if (user == false) {
       router.push("/");
     }
+    console.log("dash admin: ", admin);
   }, [admin]);
 
   useEffect(() => {
@@ -102,7 +107,10 @@ export default function Dash(
       return;
     }
 
-    if (userData[0].role === "Admin" || userData[0].role === "Editor") {
+    if (
+      (userData[0] && userData[0].role === "Admin") ||
+      (userData[0] && userData[0].role === "Editor")
+    ) {
       try {
         const res = await fetch("/api/isDisableUser", {
           method: "POST",
