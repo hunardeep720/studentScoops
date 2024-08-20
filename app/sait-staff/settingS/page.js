@@ -13,7 +13,7 @@ import { deleteSaitUser } from "@/services/PostRequest/postRequest";
 import { useRouter } from "next/navigation";
 import UserProfile from "./userProfile/page";
 
-export default function Settings(data, getUserData) {
+export default function Settings({ data, getUserData }) {
   const route = useRouter();
   const [userEmail, setUserEmail] = useState("");
   const { user } = useUserAuth();
@@ -41,7 +41,7 @@ export default function Settings(data, getUserData) {
   return (
     <div className="flex min-h-screen mx-auto">
       <main className="flex-1  dark:bg-gray-800 p-6 md:p-10">
-        {saitData ? (
+        {saitData && saitData[0] ? (
           <div className="max-w-4xl mx-auto grid gap-8">
             <UserProfile data={saitData} getUserData={getUserData} />
             <Passwordreset auth={auth} email={saitData[0].email} />
