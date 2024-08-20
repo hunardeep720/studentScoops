@@ -25,29 +25,45 @@ const Table = ({
   const [users, setUsers] = useState(null);
   const [showModal, setShowModal] = useState(false);
   const [uid, setUid] = useState("");
+  const [filteredEmployees, setFilteredEmployees] = useState([]);
   //modal for handle delete
   const [isDeleteModal, setIsDeleteModal] = useState(false);
 
   useEffect(() => {
+    console.log("admin: ", admin);
     if (admin) {
       setUsers(admin);
     }
   }, [admin]);
 
-  const filteredEmployees =
-    users && users.length > 0 && users !== null
-      ? users.filter((user) => {
-          if (searchBy === "name") {
-            return user.name.toLowerCase().includes(searchTerm.toLowerCase());
-          } else if (searchBy === "email") {
-            return user.email.toLowerCase().includes(searchTerm.toLowerCase());
-          } else if (searchBy === "phone") {
-            return user.phoneNumber.includes(searchTerm);
-          }
-          return true;
-        })
-      : [];
+  useEffect(() => {setFilteredEmployees( users && users.length > 0 && users !== null
+    ? users.filter((user) => {
+        if (searchBy === "name") {
+          return user.name.toLowerCase().includes(searchTerm.toLowerCase());
+        } else if (searchBy === "email") {
+          return user.email.toLowerCase().includes(searchTerm.toLowerCase());
+        } else if (searchBy === "phone") {
+          return user.phoneNumber.includes(searchTerm);
+        }
+        return true;
+      })
+    : []);console.log("users: ",users)}, [users]);
 
+  // const filteredEmployees =
+  //   users && users.length > 0 && users !== null
+  //     ? users.filter((user) => {
+  //         if (searchBy === "name") {
+  //           return user.name.toLowerCase().includes(searchTerm.toLowerCase());
+  //         } else if (searchBy === "email") {
+  //           return user.email.toLowerCase().includes(searchTerm.toLowerCase());
+  //         } else if (searchBy === "phone") {
+  //           return user.phoneNumber.includes(searchTerm);
+  //         }
+  //         return true;
+  //       })
+  //     : [];
+
+      useEffect(() => {console.log("filteredEmployes", filteredEmployees)}, [filteredEmployees]);
 
 
   return (
