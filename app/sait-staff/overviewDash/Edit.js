@@ -5,7 +5,7 @@ import Swal from "sweetalert2";
 import { doc, setDoc, updateDoc } from "firebase/firestore";
 import { db } from "@/app/firebase/config";
 
-const Edit = ({ employeeData, setIsEditing, getData, userData }) => {
+const Edit = ({ employeeData, setIsEditing, userData }) => {
   const [name, setName] = useState(employeeData.name);
   const [email, setEmail] = useState(employeeData.email);
   const [mobileNumber, setMobileNumber] = useState(employeeData.phoneNumber);
@@ -36,12 +36,11 @@ const Edit = ({ employeeData, setIsEditing, getData, userData }) => {
       email,
       mobileNumber,
       role,
-      address
+      address,
     };
 
     const dataForUpdate = doc(db, "saitStaff", id);
     await updateDoc(dataForUpdate, employee);
-    getData();
     setIsEditing(false);
 
     Swal.fire({
