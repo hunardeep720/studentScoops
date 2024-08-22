@@ -13,7 +13,7 @@ import { deleteSaitUser } from "@/services/PostRequest/postRequest";
 import { useRouter } from "next/navigation";
 import UserProfile from "./userProfile/page";
 
-export default function Settings({ data, getUserData }) {
+export default function Settings(data) {
   const route = useRouter();
   const [userEmail, setUserEmail] = useState("");
   const { user } = useUserAuth();
@@ -21,8 +21,9 @@ export default function Settings({ data, getUserData }) {
   const [saitData, setSaitData] = useState(null);
 
   useEffect(() => {
-    if (data) {
-      setSaitData(data);
+    console.log("settingdata: ", data);
+    if (data && data.data) {
+      setSaitData(data.data);
     }
   }, [data]);
 
@@ -43,8 +44,8 @@ export default function Settings({ data, getUserData }) {
       <main className="flex-1  dark:bg-gray-800 p-6 md:p-10">
         {saitData && saitData[0] ? (
           <div className="max-w-4xl mx-auto grid gap-8">
-            <UserProfile data={saitData} getUserData={getUserData} />
-            <Passwordreset auth={auth} email={saitData[0].email} />
+            <UserProfile data={saitData} />
+            <Passwordreset />
             <section className="w-full mx-0 py-12 md:py-16">
               <div className="space-y-6">
                 <div className="space-y-2">

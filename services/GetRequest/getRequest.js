@@ -15,24 +15,19 @@ import { getDownloadURL, ref, listAll } from "firebase/storage";
 //--------------------------------------------------------Sait-staff for sait-staff home page---------------------------------------------------------
 
 //get sait data for user profile
-export async function getSaitDataByUser(uid) {
-  return new Promise((resolve, reject) => {
-    try {
-      const q = query(collection(db, "saitStaff"), where("uid", "==", uid));
-      onSnapshot(q, (saitItems) => {
-        const saitStaff = saitItems.docs.map((doc) => {
-          return { id: doc.id, ...doc.data() };
-        });
-        resolve(saitStaff);
-      }, (error) => {
-        console.error("Error getting sait information: ", error);
-        resolve([{ status: false }]);
+export async function getSaitDataByUser(onChange,uid) {
+  try {
+    const q = query(collection(db, "saitStaff"), where("uid", "==", uid));
+    onSnapshot(q, (sait) => {
+      const saitStaff = sait.docs.map((doc) => {
+        return { id: doc.id, ...doc.data() };
       });
-    } catch (error) {
-      console.error("Error getting sait information: ", error);
-      resolve([{ status: false }]);
-    }
-  });
+      onChange(saitStaff);
+    });
+  } catch (error) {
+    console.error("Error getting restaurant information: ", error);
+    onChange([]);
+  }
 }
 
 // get sait data for sait staff home page

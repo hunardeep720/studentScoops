@@ -42,19 +42,19 @@ export default function Page() {
 
   //getting sait user data
   async function fetchSaitStaffUserInformation() {
-    const data = await getSaitDataByUser(user);
-    console.log("status: ", data);
-    console.log("user: ", user);
-    if (data && data.length > 0) {
-      if (data[0].active == false || data[0].status == false) {
+    getSaitDataByUser((data) => {
+      console.log("status: ", data);
+      console.log("user: ", user);
+      if (data && data.length > 0) {
+        if (data[0].active == false || data[0].status == false) {
+          router.push("/");
+        }
+      }
+      if (data && data.length == 0) {
         router.push("/");
       }
-    }
-    if (data && data.length == 0) {
-      router.push("/");
-    }
-    setUserData(data);
-    console.log("default: ", data);
+      setUserData(data);
+    }, user);
   }
 
   //<<<<<-------------------------------------------------fething related to Students----------------------------------------------------------->>>>>
@@ -171,12 +171,7 @@ export default function Page() {
                 restaurants={restaurants}
               />
             )}
-            {activeTab === "setting" && (
-              <Settings
-                data={userData}
-                getUserData={fetchSaitStaffUserInformation}
-              />
-            )}
+            {activeTab === "setting" && <Settings data={userData} />}
           </div>
         </div>
       ) : (

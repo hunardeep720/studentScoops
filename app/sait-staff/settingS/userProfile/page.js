@@ -3,6 +3,7 @@
  * @see https://v0.dev/t/SnDrbEvPfnn
  * Documentation: https://v0.dev/docs#integrating-generated-code-into-your-nextjs-app
  */
+
 "use client";
 
 import { useState, useEffect, useRef } from "react";
@@ -24,8 +25,13 @@ import {
 } from "firebase/storage";
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
 import { MdOutlineRemove } from "react-icons/md";
+import { getSaitDataByUser } from "@/services/GetRequest/getRequest";
+import { useUserAuth } from "../../../../services/utils";
+import { useRouter } from "next/navigation";
 
-export default function UserProfile(data, getUserData) {
+export default function UserProfile() {
+  const router = useRouter();
+  const { user } = useUserAuth();
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
@@ -34,30 +40,54 @@ export default function UserProfile(data, getUserData) {
   const [imageUrl, setImageUrl] = useState("");
   const fileInpt = useRef(null);
   const [uploading, setUploading] = useState(false);
+  const [data, setData] = useState(null);
+
+  async function fetchSaitStaffUserInformation() {
+    getSaitDataByUser((data) => {
+      console.log("setting status: ", data);
+      console.log("user: ", user);
+      if (data && data.length > 0) {
+        if (data[0].active == false || data[0].status == false) {
+          router.push("/");
+        }
+      }
+      if (data && data.length == 0) {
+        router.push("/");
+      }
+      setData(data[0]);
+    }, user);
+  }
 
   useEffect(() => {
-    if (data && data.data[0]) {
-      setName(data.data[0].name);
-      setEmail(data.data[0].email);
-      setPhoneNumber(data.data[0].phoneNumber);
-      setAddress(data.data[0].address);
-      setRole(data.data[0].role);
-      setImageUrl(data.data[0].imageUrl);
+    if (user) {
+      fetchSaitStaffUserInformation();
+    }
+  }, [user]);
+
+  useEffect(() => {
+    if (data) {
+      console.log("data conditon block running",data)
+      setName(data.name);
+      setEmail(data.email);
+      setPhoneNumber(data.phoneNumber);
+      setAddress(data.address);
+      setRole(data.role);
+      setImageUrl(data.imageUrl);
       setUploading(false);
     }
-    console.log("setting data: ", data.data[0]);
+    console.log("userprofile data: ", data);
   }, [data]);
 
   useEffect(() => {
     if (
-      (data.data[0] && !data.data[0].imageUrl) ||
-      (data.data[0] && data.data[0].imageUrl === null)
+      (data && !data.imageUrl) ||
+      (data && data.imageUrl === null)
     ) {
       setImageUrl("/assets/images/UserDefaultSaitStaff.png");
     } else {
-      setImageUrl(data.data[0] && data.data[0].imageUrl);
+      setImageUrl(data && data.imageUrl);
     }
-  }, [imageUrl]);
+  }, [imageUrl,data]);
 
   const handleDivClick = () => {
     fileInpt.current.click();
@@ -66,7 +96,7 @@ export default function UserProfile(data, getUserData) {
   async function uploadImage(image) {
     try {
       const storage = getStorage();
-      const folderRef = ref(storage, `Saitstaff/${data.data[0].uid}`);
+      const folderRef = ref(storage, `Saitstaff/${data.uid}`);
 
       const deleteFolder = async (folderRef) => {
         const res = await listAll(folderRef);
@@ -80,10 +110,7 @@ export default function UserProfile(data, getUserData) {
       };
 
       await deleteFolder(folderRef).then(() => {
-        const storageRef = ref(
-          storage,
-          `Saitstaff/${data.data[0].uid}/${image.name}`
-        );
+        const storageRef = ref(storage, `Saitstaff/${data.uid}/${image.name}`);
         const uploadTask = uploadBytesResumable(storageRef, image);
         uploadTask.on(
           "state_changed",
@@ -108,12 +135,11 @@ export default function UserProfile(data, getUserData) {
 
             try {
               // Query to find the restaurant document with the matching userId
-              const docRef = doc(db, "saitStaff", data.data[0].id);
+              const docRef = doc(db, "saitStaff", data.id);
               await updateDoc(docRef, {
                 imageUrl: downloadURL,
               }).then(() => {
                 alert("Image uploaded successfully");
-                getUserData();
               });
             } catch (error) {
               console.error("Error writing document: ", error);
@@ -131,7 +157,7 @@ export default function UserProfile(data, getUserData) {
   async function removeImage() {
     try {
       const storage = getStorage();
-      const folderRef = ref(storage, `Saitstaff/${data.data[0].uid}`);
+      const folderRef = ref(storage, `Saitstaff/${data.uid}`);
 
       const deleteFolder = async (folderRef) => {
         const res = await listAll(folderRef);
@@ -147,12 +173,11 @@ export default function UserProfile(data, getUserData) {
       await deleteFolder(folderRef).then(async () => {
         try {
           // Query to find the restaurant document with the matching userId
-          const docRef = doc(db, "saitStaff", data.data[0].id);
+          const docRef = doc(db, "saitStaff", data.id);
           await updateDoc(docRef, {
             imageUrl: null,
           }).then(() => {
             alert("Image uploaded successfully");
-            data.getUserData();
           });
         } catch (error) {
           console.error("Error writing document: ", error);
@@ -199,14 +224,13 @@ export default function UserProfile(data, getUserData) {
   async function updateProfile(e) {
     e.preventDefault();
     try {
-      const docRef = doc(db, "saitStaff", data.data[0].id);
+      const docRef = doc(db, "saitStaff", data.id);
       await updateDoc(docRef, {
         name: name,
         phoneNumber: phoneNumber,
         address: address,
       }).then(() => {
         alert("Profile updated successfully");
-        getUserData();
       });
     } catch (err) {
       console.log(err);
@@ -215,7 +239,7 @@ export default function UserProfile(data, getUserData) {
   return (
     // Changes to be made here
     <>
-      {data && data.data[0] ? (
+      {data ? (
         <div className="mx-full max-w-md">
           <div className="mx-auto grid items-center justify-center w-[200%]">
             <div
@@ -258,7 +282,7 @@ export default function UserProfile(data, getUserData) {
                 </div>
               </div>
             </div>
-            <h1 className="text-3xl font-bold mx-auto my-10">{data.data[0].name}</h1>
+            <h1 className="text-3xl font-bold mx-auto my-10">{data.name}</h1>
           </div>
           <Card className="w-[200%]">
             <CardContent className="grid grid-cols-2 gap-5 mt-6">

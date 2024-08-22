@@ -5,7 +5,7 @@
  */
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Card, CardContent, CardFooter } from "@/Components/ui/card";
 import { Label } from "@/Components/ui/label";
 import { Switch } from "@/Components/ui/switch";
@@ -16,18 +16,21 @@ import {
   EmailAuthProvider,
   reauthenticateWithCredential,
 } from "firebase/auth";
+import { getAuth } from "firebase/auth";
 
-export default function Passwordreset({ auth, email }) {
+export default function Passwordreset() {
+  const auth = getAuth();
   const user = auth.currentUser;
   const [oldPassword, setOldPassword] = useState("");
   const [newPassword, setNewPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
-  const credential = EmailAuthProvider.credential(email, oldPassword);
   const [showOldPassword, setShowOldPassword] = useState(false);
   const [showSection, setShowSection] = useState(true);
   const [showPassword, setShowPassword] = useState(false);
   const [showPasswordConfirm, setShowPasswordConfirm] = useState(false);
   const [passwordError, setPasswordError] = useState("");
+  const [email, setEmail] = useState("");
+  const credential = EmailAuthProvider.credential(email, oldPassword);
 
   const handlePasswordChange = () => {
     if (oldPassword === "" || newPassword === "" || confirmPassword === "") {
@@ -66,6 +69,12 @@ export default function Passwordreset({ auth, email }) {
         alert("Error reauthenticating user: ", error);
       });
   };
+
+  useEffect(() => {
+    if (user) {
+      setEmail(user.email);
+    }
+  }, [user]);
 
   return (
     // Changes to be made here

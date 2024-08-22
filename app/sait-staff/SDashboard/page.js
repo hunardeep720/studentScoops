@@ -8,7 +8,7 @@ import {
   deleteStudentsFromAdmin,
 } from "@/services/PostRequest/postRequest";
 
-const Dashboard = ({studentData, userData}) => {
+const Dashboard = (studentData, userData) => {
   const [students, setStudents] = useState(null);
   const [selectedStudent, setSelectedStudent] = useState(null);
   const [isAdding, setIsAdding] = useState(false);
@@ -16,9 +16,9 @@ const Dashboard = ({studentData, userData}) => {
   const [isEditing, setIsEditing] = useState(null);
 
   useEffect(() => {
-    if (studentData) {
+    if (studentData.studentData) {
       console.log("studentData: ", studentData);
-      setStudents(studentData);
+      setStudents(studentData.studentData);
     }
   }, [studentData]);
 
@@ -29,7 +29,7 @@ const Dashboard = ({studentData, userData}) => {
   };
 
   const handleChangeStatus = async (id, status, uid) => {
-    if (userData[0].role === "Admin" || userData[0].role === "Editor") {
+    if (studentData.userData[0].role === "Admin" || studentData.userData[0].role === "Editor") {
       try {
         const res = await fetch("/api/isDisableUser", {
           method: "POST",
@@ -64,8 +64,8 @@ const Dashboard = ({studentData, userData}) => {
     // Handle delete logic
     console.log("uid: ", uid);
     console.log("docId: ", docId);
-    if (uid && docId && userData) {
-      if (userData[0].role === "Admin" || userData[0].role === "Editor") {
+    if (uid && docId && studentData.userData) {
+      if (studentData.userData[0].role === "Admin" || studentData.userData[0].role === "Editor") {
         try {
           const res = await fetch("api/deleteUser", {
             method: "POST",

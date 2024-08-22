@@ -9,7 +9,7 @@ import Table from "./Table";
 import Add from "./Add";
 import Edit from "./Edit";
 
-const Dashboard = ({ restaurantData, userData }) => {
+const Dashboard = ( restaurantData, userData ) => {
   const [restaurants, setRestaurants] = useState(null);
   const [selectedRestaurant, setSelectedRestaurant] = useState(null);
   const [isAdding, setIsAdding] = useState(false);
@@ -18,7 +18,8 @@ const Dashboard = ({ restaurantData, userData }) => {
 
   useEffect(() => {
     if (restaurantData) {
-      setRestaurants(restaurantData);
+      console.log("restaurantData: ", restaurantData);
+      setRestaurants(restaurantData.restaurantData);
     }
   }, [restaurantData]);
 
@@ -35,8 +36,8 @@ const Dashboard = ({ restaurantData, userData }) => {
     // Handle delete logic
     console.log("uid: ", uid);
     console.log("docId: ", docId);
-    if (uid && docId && userData) {
-      if (userData[0].role === "Admin" || userData[0].role === "Editor") {
+    if (uid && docId && restaurantData.userData) {
+      if (restaurantData.userData[0].role === "Admin" || restaurantData.restaurantData.userData[0].role === "Editor") {
         try {
           const res = await fetch("api/deleteUser", {
             method: "POST",
@@ -63,7 +64,7 @@ const Dashboard = ({ restaurantData, userData }) => {
 
   //to update the status of the user
   const handleChangeStatus = async (id, status, uid) => {
-    if (userData[0].role === "Admin" || userData[0].role === "Editor") {
+    if (restaurantData.userData[0].role === "Admin" || restaurantData.userData[0].role === "Editor") {
       try {
         const res = await fetch("/api/isDisableUser", {
           method: "POST",
