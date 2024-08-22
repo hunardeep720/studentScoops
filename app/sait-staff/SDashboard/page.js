@@ -8,7 +8,7 @@ import {
   deleteStudentsFromAdmin,
 } from "@/services/PostRequest/postRequest";
 
-const Dashboard = (studentData, userData) => {
+const Dashboard = ({studentData, userData}) => {
   const [students, setStudents] = useState(null);
   const [selectedStudent, setSelectedStudent] = useState(null);
   const [isAdding, setIsAdding] = useState(false);

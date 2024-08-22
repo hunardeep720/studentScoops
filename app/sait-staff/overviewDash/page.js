@@ -50,6 +50,7 @@ export default function Dash(data, adminData, students, restaurants) {
     if (user == false) {
       router.push("/");
     }
+    console.log("dash admin: ", admin);
   }, [admin]);
 
   useEffect(() => {
@@ -107,7 +108,10 @@ export default function Dash(data, adminData, students, restaurants) {
       return;
     }
 
-    if (userData[0].role === "Admin" || userData[0].role === "Editor") {
+    if (
+      (userData[0] && userData[0].role === "Admin") ||
+      (userData[0] && userData[0].role === "Editor")
+    ) {
       try {
         const res = await fetch("/api/isDisableUser", {
           method: "POST",

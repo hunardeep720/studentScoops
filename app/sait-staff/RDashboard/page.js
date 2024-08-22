@@ -9,7 +9,7 @@ import Table from "./Table";
 import Add from "./Add";
 import Edit from "./Edit";
 
-const Dashboard = (restaurantData, userData) => {
+const Dashboard = ({ restaurantData, userData }) => {
   const [restaurants, setRestaurants] = useState(null);
   const [selectedRestaurant, setSelectedRestaurant] = useState(null);
   const [isAdding, setIsAdding] = useState(false);
