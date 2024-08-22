@@ -13,7 +13,7 @@ import {
   getSaitData,
   getSaitDataByUser,
   getStudentData,
-  getRestaurantData
+  getRestaurantData,
 } from "@/services/GetRequest/getRequest";
 import { useUserAuth } from "@/services/utils";
 import { getAuth, signOut } from "firebase/auth";
@@ -37,7 +37,6 @@ export default function Page() {
     getSaitData(async (data) => {
       console.log("data: ", data);
       setAdmin(data);
-      fetchSaitStaffUserInformation();
     });
   }
 
@@ -45,12 +44,13 @@ export default function Page() {
   async function fetchSaitStaffUserInformation() {
     const data = await getSaitDataByUser(user);
     console.log("status: ", data);
-    if (data.length > 0) {
+    console.log("user: ", user);
+    if (data && data.length > 0) {
       if (data[0].active == false || data[0].status == false) {
         router.push("/");
       }
     }
-    if(data.length == 0){
+    if (data && data.length == 0) {
       router.push("/");
     }
     setUserData(data);
@@ -69,14 +69,13 @@ export default function Page() {
 
   //<<<<<-------------------------------------------------fething related to Restaurants----------------------------------------------------------->>>>>
 
-   //fetch restaurants data
-   async function fetchRestaurantData() {
+  //fetch restaurants data
+  async function fetchRestaurantData() {
     getRestaurantData(async (data) => {
       console.log("data: ", data);
       setRestaurants(data);
     });
   }
-
 
   useEffect(() => {
     if (user) {
@@ -157,13 +156,16 @@ export default function Page() {
           </div>
           <div className="flex-1 p-6">
             {/* select the tab based on the click */}
-            {activeTab === "student" && <SDashboard studentData={students} userData={userData}/>}
-            {activeTab === "restaurant" && <RDashboard userData={userData} restaurantData={restaurants}/>}
+            {activeTab === "student" && (
+              <SDashboard studentData={students} userData={userData} />
+            )}
+            {activeTab === "restaurant" && (
+              <RDashboard userData={userData} restaurantData={restaurants} />
+            )}
             {activeTab === "home" && (
               <Dash
                 adminData={admin}
-                fetchData={fetchData}
-                fetchDataByUser={fetchSaitStaffUserInformation}
+                // fetchDataByUser={fetchSaitStaffUserInformation}
                 data={userData}
                 students={students}
                 restaurants={restaurants}

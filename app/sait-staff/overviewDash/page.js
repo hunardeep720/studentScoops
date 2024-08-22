@@ -12,15 +12,12 @@ import {
 import { getAuth } from "firebase/auth";
 import { useRouter } from "next/navigation";
 import Swal from "sweetalert2";
+import {
+  getSaitData,
+  getSaitDataByUser,
+} from "@/services/GetRequest/getRequest";
 
-export default function Dash(
-  fetchData,
-  fetchDataByUser,
-  data,
-  adminData,
-  students,
-  restaurants
-) {
+export default function Dash(data, adminData, students, restaurants) {
   const auth = getAuth();
   const router = useRouter();
   const [userData, setUserData] = useState(null);
@@ -30,14 +27,24 @@ export default function Dash(
   const [admin, setAdmin] = useState(null);
   const [isEditing, setIsEditing] = useState(false);
 
+  // async function fetchData() {
+  //   getSaitData(async (data) => {
+  //     console.log("data: ", data);
+  //     setAdmin(data);
+  //   });
+  // }
+
   useEffect(() => {
-    if (adminData) {
-      setAdmin(adminData);
+    console.log("this block is running");
+    if (data.adminData) {
+      console.log("adminData: ", data.adminData);
+      setAdmin(data.adminData);
     }
-    if (data) {
-      setUserData(data);
+    if (data.data) {
+      console.log("overviewdata: ", data.data);
+      setUserData(data.data);
     }
-  }, [adminData]);
+  }, [adminData, data]);
 
   useEffect(() => {
     if (user == false) {
@@ -47,8 +54,6 @@ export default function Dash(
 
   useEffect(() => {
     if (user) {
-      fetchData();
-      fetchDataByUser();
       console.log("user", auth.currentUser);
     }
     if (user == false) {
@@ -118,7 +123,6 @@ export default function Dash(
         if (data.message === "User status has been updated") {
           await updateSaitEmployeeStatus(id, status);
           Swal.fire("Status for the given user has been changed ✅");
-          fetchData();
         } else if (
           data.error ===
           "There is no user record corresponding to the provided identifier."
@@ -142,7 +146,12 @@ export default function Dash(
     <div className="min-h-screen flex flex-col items-center justify-start py-2">
       <main className="flex flex-col items-start w-full px-20 py-4 ">
         <div className="self-start ml-5">
-          <Overview studentData={students} restaurantData={restaurants} />
+          {data.student && data.restaurant && (
+            <Overview
+              studentData={data.students}
+              restaurantData={data.restaurants}
+            />
+          )}
         </div>
         <div className="flex flex-col items-center w-full mt-8">
           {isAdding ? (
@@ -151,7 +160,7 @@ export default function Dash(
                 admin={admin}
                 setAdmins={setAdmin}
                 setIsAdding={setIsAdding}
-                fetchDataByUser={fetchData}
+                // fetchDataByUser={fetchData}
               />
             </>
           ) : (
@@ -162,7 +171,7 @@ export default function Dash(
                   <Edit
                     employeeData={editEmployeData}
                     setIsEditing={setIsEditing}
-                    getData={fetchData}
+                    // getData={fetchData}
                     userData={userData}
                   />
                 </>

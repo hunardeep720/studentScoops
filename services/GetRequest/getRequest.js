@@ -16,17 +16,23 @@ import { getDownloadURL, ref, listAll } from "firebase/storage";
 
 //get sait data for user profile
 export async function getSaitDataByUser(uid) {
-  try {
-    const q = query(collection(db, "saitStaff"), where("uid", "==", uid));
-    const querySnapshot = await getDocs(q);
-    const saitItems = querySnapshot.docs.map((doc) => {
-      return { id: doc.id, ...doc.data() };
-    });
-    return saitItems;
-  } catch (error) {
-    console.error("Error getting sait information: ", error);
-    return { status: false };
-  }
+  return new Promise((resolve, reject) => {
+    try {
+      const q = query(collection(db, "saitStaff"), where("uid", "==", uid));
+      onSnapshot(q, (saitItems) => {
+        const saitStaff = saitItems.docs.map((doc) => {
+          return { id: doc.id, ...doc.data() };
+        });
+        resolve(saitStaff);
+      }, (error) => {
+        console.error("Error getting sait information: ", error);
+        resolve([{ status: false }]);
+      });
+    } catch (error) {
+      console.error("Error getting sait information: ", error);
+      resolve([{ status: false }]);
+    }
+  });
 }
 
 // get sait data for sait staff home page
@@ -171,15 +177,18 @@ export async function getRestaurantDataForLogin(user) {
 
 //get restaurant menu as history for restaurant
 export function getRestaurantMenuHistoryByOwner(onChange, restaurantDocId) {
-  try{
-    const restaurantCollection = query(collection(db, "restaurants", restaurantDocId, "history"), orderBy("pickupAt", "desc"));
+  try {
+    const restaurantCollection = query(
+      collection(db, "restaurants", restaurantDocId, "history"),
+      orderBy("pickupAt", "desc")
+    );
     onSnapshot(restaurantCollection, (restaurants) => {
       const restaurantData = restaurants.docs.map((doc) => {
         return { id: doc.id, ...doc.data() };
       });
       onChange(restaurantData);
     });
-  }catch(error){
+  } catch (error) {
     console.error("Error getting restaurant information: ", error);
     onChange([]);
   }
@@ -346,14 +355,19 @@ export function getCheckoutMenuByStudents(onChange, id, menuId) {
 }
 
 //get student menu history for students
-export function getStudentMenuHistory(onChange,studentDocId){
-  try{
-    const studentCollection = query(collection(db, "students", studentDocId, "history"));
+export function getStudentMenuHistory(onChange, studentDocId) {
+  try {
+    const studentCollection = query(
+      collection(db, "students", studentDocId, "history")
+    );
     onSnapshot(studentCollection, (snapshot) => {
-      const menuItems = snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
+      const menuItems = snapshot.docs.map((doc) => ({
+        id: doc.id,
+        ...doc.data(),
+      }));
       onChange(menuItems);
     });
-  }catch(error){
+  } catch (error) {
     console.error("Error getting student information: ", error);
     onChange([]);
   }
@@ -421,20 +435,20 @@ export async function getMenuInformation(userId) {
   }
 }
 
- export async function getStudentEmailWithStatus() {
-   try {
-     const q = query(
-       collection(db, "student_email"),
+export async function getStudentEmailWithStatus() {
+  try {
+    const q = query(
+      collection(db, "student_email"),
       where("active", "==", true)
-     );
-     const querySnapshot = await getDocs(q);
+    );
+    const querySnapshot = await getDocs(q);
     const userItems = querySnapshot.docs.map((doc) => doc.data().studentEmail);
-     return userItems;
-   } catch (err) {
-     console.log("error while getting student email information ", err);
-     return [];
+    return userItems;
+  } catch (err) {
+    console.log("error while getting student email information ", err);
+    return [];
   }
- }
+}
 
 export async function getRestaurantLogos() {
   const storageRef = ref(storage, "restaurant_logo/");

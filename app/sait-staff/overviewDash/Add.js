@@ -10,7 +10,7 @@ import { sendMail } from "@/lib/mail";
 import PasswordEmail from "@/Components/PasswordEmail";
 import ReactDOMServer from "react-dom/server";
 
-const Add = ({ admin, setAdmins, setIsAdding, fetchDataByUser }) => {
+const Add = ({ admin, setAdmins, setIsAdding}) => {
   const [role, setRole] = useState("");
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -100,7 +100,6 @@ const Add = ({ admin, setAdmins, setIsAdding, fetchDataByUser }) => {
 
       await addDoc(collection(db, "saitStaff"), newAdmin);
       //Update local state
-      fetchDataByUser();
       setIsAdding(false);
       send();
 
