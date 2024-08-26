@@ -47,7 +47,7 @@ export default function Header_stud(handleSignOut) {
       <div className="flex items-center gap-4">
         {/* <CartDropdown cart={cart} addToCart={addToCart} removeFromCart={removeFromCart} getTotal={getTotal}  /> */}
         <CartDropdown
-          studentData={studentData}
+          student={studentData}
           className="text-primary bg-white"
         />
 

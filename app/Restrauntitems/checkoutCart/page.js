@@ -20,13 +20,14 @@ import Swal from "sweetalert2";
 import Image from "next/image";
 import PropTypes from "prop-types";
 
-const CheckoutCart = (studentData) => {
+const CheckoutCart = (student) => {
   const [subtotal, setSubtotal] = useState(0);
   const [cartItems, setCartItems] = useState(null); // for the items which are placed in student cart
   const router = useRouter();
   const [userData, setUserData] = useState(null); // for the restaurant data
   const [cartCounter, setCartCount] = useState(0);
   const [isSheetOpen, setIsSheetOpen] = useState(false);
+  const [studentData, setStudentData] = useState(null);
 
   function fetchCartItems() {
     getStudentMenuByStudents((data) => {
@@ -39,6 +40,13 @@ const CheckoutCart = (studentData) => {
       setUserData(data);
     }, cartItems[0].restaurantUid);
   }
+
+  useEffect(() => {if(student && student.student){
+    setStudentData(student.student);
+    console.log("student.studentData ",student.student);
+  }}, [student]);
+
+  useEffect(() => {console.log("studentData: ",studentData)}, [studentData]);
 
   useEffect(() => {
     if (cartItems && cartItems !== null && cartItems.length > 0) {
