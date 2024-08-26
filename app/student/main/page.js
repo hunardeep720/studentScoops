@@ -5,7 +5,6 @@ import { useUserAuth } from "@/services/utils";
 import { motion } from "framer-motion";
 import { IoRestaurantOutline } from "react-icons/io5";
 
-
 import Link from "next/link";
 // import { Card } from "../../components/ui/card";
 import { Button } from "@/Components/ui/button";
@@ -28,9 +27,9 @@ const Home = () => {
     console.log("width", width);
 
     if (width <= 600) {
-      return small.current = true;
+      return (small.current = true);
     } else {
-      return small.current = false;
+      return (small.current = false);
     }
   }
   useEffect(() => {
@@ -62,8 +61,6 @@ const Home = () => {
       setFilteredData(results);
     }
   };
-
-  const [showAllRestaurants, setShowAllRestaurants] = useState(false);
 
   //styling
 
@@ -98,7 +95,7 @@ const Home = () => {
   return (
     <>
       <main>
-        <section className=" h-screen w-full flex items-center ">
+        <section className="hidden h-screen w-full  items-center ">
           <div className="relative w-[50%] h-full">
             <motion.div
               className="absolute inset-0 z-0"
@@ -165,10 +162,7 @@ const Home = () => {
                 </div>
               </div>
               <div className="grid grid-cols-1 gap-6 p-4 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 md:p-6">
-                {(showAllRestaurants
-                  ? filteredData
-                  : filteredData.slice(0, 8)
-                ).map((restaurant) => (
+                {filteredData.map((restaurant) => (
                   <Link
                     key={restaurant.id}
                     href={{
@@ -209,19 +203,7 @@ const Home = () => {
                   </Link>
                 ))}
               </div>
-              <div>
-                {filteredData.length > 8 && (
-                  <div className="flex justify-center mt-4">
-                    <Button
-                      className=" bg-orange-300 hover:bg-orange-500"
-                      variant="outline"
-                      onClick={() => setShowAllRestaurants(!showAllRestaurants)}
-                    >
-                      {showAllRestaurants ? "View Less" : "View All"}
-                    </Button>
-                  </div>
-                )}
-              </div>{" "}
+              <div></div>{" "}
             </>
           ) : (
             <div className="flex h-screen w-full text-center justify-center items-center text-3xl animate-pulse">
