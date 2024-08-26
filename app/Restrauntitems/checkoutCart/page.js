@@ -41,12 +41,16 @@ const CheckoutCart = (student) => {
     }, cartItems[0].restaurantUid);
   }
 
-  useEffect(() => {if(student && student.student){
-    setStudentData(student.student);
-    console.log("student.studentData ",student.student);
-  }}, [student]);
+  useEffect(() => {
+    if (student && student.student) {
+      setStudentData(student.student);
+      console.log("student.studentData ", student.student);
+    }
+  }, [student]);
 
-  useEffect(() => {console.log("studentData: ",studentData)}, [studentData]);
+  useEffect(() => {
+    console.log("studentData: ", studentData);
+  }, [studentData]);
 
   useEffect(() => {
     if (cartItems && cartItems !== null && cartItems.length > 0) {
@@ -93,7 +97,11 @@ const CheckoutCart = (student) => {
 
   return (
     <div className="flex items-center justify-center h-screen">
-      <Sheet open={isSheetOpen} onOpenChange={setIsSheetOpen}>
+      <Sheet
+        open={isSheetOpen}
+        onOpenChange={setIsSheetOpen}
+        
+      >
         <SheetTrigger asChild>
           <Button
             size="icon"
@@ -109,6 +117,7 @@ const CheckoutCart = (student) => {
         <SheetContent
           side="right"
           className="w-full max-w-lg bg-white rounded-lg shadow-xl"
+          style={{ top: "0", right: "0", height: "100vh", zIndex: 22 }}
         >
           <SheetHeader className="border-b">
             {userData && userData.length > 0 ? (
