@@ -23,8 +23,6 @@ export default function Profile() {
 
   async function fetchRestaurantOwnerInformation() {
     getRestaurantDataByOwner((data) => {
-      console.log("Data: ", data);
-      console.log("user: ", user);
       setSaitData(data);
     }, user);
   }
@@ -56,12 +54,11 @@ export default function Profile() {
           <div className="max-w-4xl mx-auto grid gap-8">
             {saitData && saitData.length > 0 && (
               <UserProfile
-                data={saitData && saitData.length > 0 ? saitData : null}
+                saitData={saitData && saitData.length > 0 ? saitData : null}
               />
             )}
             {saitData && saitData.length > 0 && saitData[0].email && (
               <Passwordreset
-                auth={auth}
                 email={
                   saitData && saitData.length > 0 && saitData[0].email
                     ? saitData[0].email

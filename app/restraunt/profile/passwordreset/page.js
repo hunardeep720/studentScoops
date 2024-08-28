@@ -5,7 +5,7 @@
  */
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Card, CardContent, CardFooter } from "@/Components/ui/card";
 import { Label } from "@/Components/ui/label";
 import { Switch } from "@/Components/ui/switch";
@@ -16,9 +16,12 @@ import {
   EmailAuthProvider,
   reauthenticateWithCredential,
 } from "firebase/auth";
+import { getAuth } from "firebase/auth";
 
-export default function Passwordreset(auth, email) {
+export default function Passwordreset(userEmail) {
+  const auth = getAuth();
   const user = auth.currentUser;
+  const [email, setEmail] = useState("");
   const [oldPassword, setOldPassword] = useState("");
   const [newPassword, setNewPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
@@ -28,6 +31,12 @@ export default function Passwordreset(auth, email) {
   const [showPassword, setShowPassword] = useState(false);
   const [showPasswordConfirm, setShowPasswordConfirm] = useState(false);
   const [passwordError, setPasswordError] = useState("");
+
+  useEffect(() => {
+    if (userEmail) {
+      setEmail(userEmail.email);
+    }
+  }, [userEmail]);
 
   const handlePasswordChange = () => {
     if (oldPassword === "" || newPassword === "" || confirmPassword === "") {

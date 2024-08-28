@@ -25,7 +25,7 @@ import {
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
 import { MdOutlineRemove } from "react-icons/md";
 
-export default function UserProfile(data) {
+export default function UserProfile(saitData) {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
@@ -33,6 +33,7 @@ export default function UserProfile(data) {
   const [imageUrl, setImageUrl] = useState("");
   const fileInpt = useRef(null);
   const [uploading, setUploading] = useState(false);
+  const [data, setData] = useState(null);
 
   useEffect(() => {
     if (data && data?.[0]) {
@@ -46,12 +47,19 @@ export default function UserProfile(data) {
   }, [data]);
 
   useEffect(() => {
-    if (!data[0].imageUrl || data[0].imageUrl === null) {
-      setImageUrl("/assets/images/UserDefaultSaitStaff.png");
-    } else {
-      setImageUrl(data[0].imageUrl);
+    if(saitData && saitData.saitData){
+      setData(saitData.saitData);
     }
-  }, [imageUrl]);
+    console.log("userData userprofile: ", saitData.saitData);
+  }, [saitData]);
+
+  useEffect(() => {
+    if (data && (!data[0].imageUrl || data[0].imageUrl === null)) {
+      setImageUrl("/assets/images/UserDefaultSaitStaff.png");
+    } else{
+      setImageUrl(data && data[0].imageUrl);
+    }
+  }, [data]);
 
   const handleDivClick = () => {
     fileInpt.current.click();
@@ -204,117 +212,123 @@ export default function UserProfile(data) {
   return (
     // Changes to be made here
     <>
-    {data && data[0] ? (<div className="mx-full max-w-md">
-      <div className="mx-auto grid items-center justify-center w-[200%]">
-        <div
-          className="mx-auto rounded-full bg-cover bg-center w-96 h-96 cursor-pointer relative"
-          style={{ backgroundImage: `url(${imageUrl})` }}
-        >
-          <div className="h-full w-full">
-            <div className={uploading ? "animate-spin" : null}>
-              <input
-                type="file"
-                ref={fileInpt}
-                onChange={(e) => handleFileChange(e)}
-                className="hidden"
-              />
-              <div
-                className={
-                  uploading
-                    ? "group rounded-full w-96 h-96 hover:bg-black/30 bg-black/50 grid items-center justify-center text-center cursor-pointer"
-                    : "group rounded-full w-96 h-96 hover:bg-black/30 grid items-center justify-center text-center cursor-pointer"
-                }
-              >
-                {uploading ? (
-                  <AiOutlineLoading3Quarters className="group-hover:block text-8xl z-20 text-white" />
-                ) : (
-                  <div className="flex">
-                    <CgArrowsExchange
-                      onClick={handleDivClick}
-                      className="hidden group-hover:block text-8xl z-20 text-white"
-                    />
-                    <MdOutlineRemove
-                      onClick={() => {
-                        setUploading(true);
-                        removeImage();
-                      }}
-                      className="hidden group-hover:block text-8xl z-20 text-white"
-                    />
+      {data && data[0] ? (
+        <div className="mx-full max-w-md">
+          <div className="mx-auto grid items-center justify-center w-[200%]">
+            <div
+              className="mx-auto rounded-full bg-cover bg-center w-96 h-96 cursor-pointer relative"
+              style={{ backgroundImage: `url(${imageUrl})` }}
+            >
+              <div className="h-full w-full">
+                <div className={uploading ? "animate-spin" : null}>
+                  <input
+                    type="file"
+                    ref={fileInpt}
+                    onChange={(e) => handleFileChange(e)}
+                    className="hidden"
+                  />
+                  <div
+                    className={
+                      uploading
+                        ? "group rounded-full w-96 h-96 hover:bg-black/30 bg-black/50 grid items-center justify-center text-center cursor-pointer"
+                        : "group rounded-full w-96 h-96 hover:bg-black/30 grid items-center justify-center text-center cursor-pointer"
+                    }
+                  >
+                    {uploading ? (
+                      <AiOutlineLoading3Quarters className="group-hover:block text-8xl z-20 text-white" />
+                    ) : (
+                      <div className="flex">
+                        <CgArrowsExchange
+                          onClick={handleDivClick}
+                          className="hidden group-hover:block text-8xl z-20 text-white"
+                        />
+                        <MdOutlineRemove
+                          onClick={() => {
+                            setUploading(true);
+                            removeImage();
+                          }}
+                          className="hidden group-hover:block text-8xl z-20 text-white"
+                        />
+                      </div>
+                    )}
                   </div>
-                )}
+                </div>
               </div>
             </div>
+            <h1 className="text-3xl font-bold mx-auto my-10">{data[0].name}</h1>
           </div>
+          <Card className="w-[200%]">
+            <CardContent className="grid grid-cols-2 gap-5 mt-6">
+              <div className="space-y-2">
+                <Label htmlFor="password">Name</Label>
+                <div className="relative">
+                  <Input
+                    id="password"
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
+                    required
+                  />
+                </div>
+              </div>
+              <div className="space-y-2">
+                <Label htmlFor="email">Email</Label>
+                <div className="relative">
+                  <Input
+                    id="email"
+                    value={email}
+                    readOnly={true}
+                    className="cursor-not-allowed"
+                  />
+                </div>
+              </div>
+              <div className="space-y-2">
+                <Label htmlFor="phoneNumber">Phone Number</Label>
+                <div className="relative">
+                  <Input
+                    id="phoneNumber"
+                    maxLength={14}
+                    value={phoneNumber}
+                    onChange={(e) => {
+                      setPhoneNumber(formatPhoneNumber(e.target.value));
+                    }}
+                    required
+                  />
+                </div>
+              </div>
+              <div className="space-y-2">
+                <Label htmlFor="address">Address</Label>
+                <div className="relative">
+                  <Input
+                    id="address"
+                    value={address}
+                    onChange={(e) => {
+                      setAddress(e.target.value);
+                    }}
+                    required
+                  />
+                </div>
+              </div>
+            </CardContent>
+            <CardFooter>
+              <Button
+                type="submit"
+                className="w-full bg-green-600"
+                onClick={(e) => {
+                  updateProfile(e);
+                }}
+              >
+                Update Profile
+              </Button>
+            </CardFooter>
+          </Card>
         </div>
-        <h1 className="text-3xl font-bold mx-auto my-10">{data[0].name}</h1>
-      </div>
-      <Card className="w-[200%]">
-        <CardContent className="grid grid-cols-2 gap-5 mt-6">
-          <div className="space-y-2">
-            <Label htmlFor="password">Name</Label>
-            <div className="relative">
-              <Input
-                id="password"
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-                required
-              />
-            </div>
-          </div>
-          <div className="space-y-2">
-            <Label htmlFor="email">Email</Label>
-            <div className="relative">
-              <Input
-                id="email"
-                value={email}
-                readOnly={true}
-                className="cursor-not-allowed"
-              />
-            </div>
-          </div>
-          <div className="space-y-2">
-            <Label htmlFor="phoneNumber">Phone Number</Label>
-            <div className="relative">
-              <Input
-                id="phoneNumber"
-                maxLength={14}
-                value={phoneNumber}
-                onChange={(e) => {
-                  setPhoneNumber(formatPhoneNumber(e.target.value));
-                }}
-                required
-              />
-            </div>
-          </div>
-          <div className="space-y-2">
-            <Label htmlFor="address">Address</Label>
-            <div className="relative">
-              <Input
-                id="address"
-                value={address}
-                onChange={(e) => {
-                  setAddress(e.target.value);
-                }}
-                required
-              />
-            </div>
-          </div>
-        </CardContent>
-        <CardFooter>
-          <Button
-            type="submit"
-            className="w-full bg-green-600"
-            onClick={(e) => {
-              updateProfile(e);
-            }}
-          >
-            Update Profile
-          </Button>
-        </CardFooter>
-      </Card>
-    </div>) : (<div className="w-full h-full flex justify-center items-center text-3xl font-bold animate-pulse"> <p>Loading...</p>
-    </div>)}</>
-    
+      ) : (
+        <div className="w-full h-full flex justify-center items-center text-3xl font-bold animate-pulse">
+          {" "}
+          <p>Loading...</p>
+        </div>
+      )}
+    </>
   );
 }
 
