@@ -1,13 +1,10 @@
 "use client";
 import { useEffect, useState, useRef } from "react";
-import { useRouter } from "next/navigation";
-import { useUserAuth } from "@/services/utils";
 import { motion } from "framer-motion";
 import { IoRestaurantOutline } from "react-icons/io5";
 
 import Link from "next/link";
 // import { Card } from "../../components/ui/card";
-import { Button } from "@/Components/ui/button";
 
 // import Slideshow from '@/components/SlideShow';
 import DealoftheDay from "@/Components/DealoftheDay";
@@ -15,11 +12,9 @@ import { getRestaurantDataByStudents } from "@/services/GetRequest/getRequest";
 
 const Home = () => {
   const small = useRef(false);
-  const { user } = useUserAuth();
   const [searchTerm, setSearchTerm] = useState("");
   const [restaurants, setRestaurants] = useState([]);
   const [filteredData, setFilteredData] = useState(null); // Initialize with data from JSON
-  const router = useRouter();
 
   //to get the viewport category
   function getViewportCategory() {

@@ -14,15 +14,29 @@ import AddressComponent from "../../address-component/page";
 import { getStudentDataByStudents } from "@/services/GetRequest/getRequest";
 import { useUserAuth } from "@/services/utils";
 import { useEffect, useState } from "react";
+import { getAuth, signOut } from "firebase/auth";
+import { useRouter } from "next/navigation";
 
-export default function Header_stud(handleSignOut) {
+export default function Header_stud() {
+  const auth = getAuth();
   const { user } = useUserAuth();
   const [studentData, setStudentData] = useState(null);
+  const router = useRouter();
 
   async function fetchStudentData() {
     getStudentDataByStudents((data) => {
       setStudentData(data);
     }, user);
+  }
+
+  function handleSignOut() {
+    signOut(auth)
+      .then(() => {
+        router.push("/");
+      })
+      .catch((error) => {
+        console.log("Error signing out", error);
+      });
   }
 
   useEffect(() => {
@@ -46,10 +60,7 @@ export default function Header_stud(handleSignOut) {
       </div>
       <div className="flex items-center gap-4">
         {/* <CartDropdown cart={cart} addToCart={addToCart} removeFromCart={removeFromCart} getTotal={getTotal}  /> */}
-        <CartDropdown
-          student={studentData}
-          className="text-primary bg-white"
-        />
+        <CartDropdown student={studentData} className="text-primary bg-white" />
 
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
@@ -113,7 +124,7 @@ export default function Header_stud(handleSignOut) {
               <Button
                 variant="destructive"
                 className="w-full bg-primary"
-                onClick={handleSignOut}
+                onClick={() => handleSignOut()}
               >
                 Logout
               </Button>
