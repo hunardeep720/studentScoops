@@ -29,7 +29,14 @@ DialogOverlay.displayName = DialogPrimitive.Overlay.displayName;
 const DialogContent = React.forwardRef(
   ({ className, children, ...props }, ref) => (
     <DialogPortal>
-      <DialogOverlay>
+      <DialogOverlay
+        style={{
+          backgroundColor: "rgb( 0 0 0/0.45)",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
         <DialogPrimitive.Content
           ref={ref}
           className={cn(
