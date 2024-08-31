@@ -83,7 +83,7 @@ const Footer = () => {
           <p className=' text-[15px] text-white w-fit hover:text-black cursor-pointer text-opacity-80 mb-[0.7rem] ' >📍 1301 16 Ave NW,<br></br> Calgary, AB T2M 0L4</p>
         </div>
       </div>
-      <h1 className=' mt-[2rem] text-[14px] w-[80%] mx-auto text-white opacity-80'>COPYRIGHT BY STUDENT SCOOPS <span id="year">{year}</span></h1>
+      <h1 className=' mt-[2rem] text-[14px] w-[80%] mx-auto text-white opacity-80'>&copy; 2024 StudentScoops. All rights reserved. <span id="year">{year}</span></h1>
     </div>
   )
 }
